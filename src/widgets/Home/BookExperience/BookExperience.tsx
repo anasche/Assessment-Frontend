@@ -1,4 +1,5 @@
 import ExploreLink from "@/components/ExploreLink";
+import Badge from "@/components/Badge";
 import EventBackground from "@/assets/images/experience/experience-1.jpg";
 import Title from "@/components/Title";
 
@@ -16,8 +17,9 @@ const BookExperience: React.FC = () => {
 
       <div className="w-full max-w-[1728px] mx-auto px-6 xl:px-[77px] relative z-10">
         <div className="max-w-xl">
-          <div className="bg-[#161687] text-white text-[9px] font-black px-4 py-1.5 mb-6 inline-block tracking-widest uppercase">
-UAE President Cup          </div>
+          <Badge className="mb-6">
+            UAE President Cup
+          </Badge>
           <Title dark={false} className="mb-6">
             Book Your Experience
           </Title>
