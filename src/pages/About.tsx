@@ -1,12 +1,16 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import AboutHero from '@/widgets/About/AboutHero/AboutHero';
-import BoardMembers from '@/widgets/About/BoardMembers/BoardMembers';
+import Loading from '@/components/Loading';
+
+const BoardMembers = lazy(() => import('@/widgets/About/BoardMembers/BoardMembers'));
 
 const About: React.FC = () => {
   return (
     <>
       <AboutHero />
-      <BoardMembers />
+      <Suspense fallback={<Loading />}>
+        <BoardMembers />
+      </Suspense>
     </>
   );
 };

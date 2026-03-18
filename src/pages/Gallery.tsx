@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import GalleryHeader from '@/widgets/Gallery/GalleryHeader';
-import GalleryGrid from '@/widgets/Gallery/GalleryGrid';
-import GalleryLightbox from '@/widgets/Gallery/GalleryLightbox';
+import Loading from '@/components/Loading';
+
 import Gallery1 from "@/assets/images/gallery/image1.png";
 import Gallery2 from "@/assets/images/gallery/image2.jpg";
 import Gallery3 from "@/assets/images/gallery/image3.jpg";
+
+const GalleryGrid = lazy(() => import('@/widgets/Gallery/GalleryGrid'));
+const GalleryLightbox = lazy(() => import('@/widgets/Gallery/GalleryLightbox'));
 
 const Gallery: React.FC = () => {
   const [isLightboxOpen, setIsLightboxOpen] = useState(false);
@@ -31,13 +34,14 @@ const Gallery: React.FC = () => {
   return (
     <>
       <GalleryHeader />
-      <GalleryGrid onAlbumClick={handleAlbumClick} />
-
-      <GalleryLightbox 
-        isOpen={isLightboxOpen} 
-        onClose={() => setIsLightboxOpen(false)} 
-        images={images}
-      />
+      <Suspense fallback={<Loading />}>
+        <GalleryGrid onAlbumClick={handleAlbumClick} />
+        <GalleryLightbox 
+          isOpen={isLightboxOpen} 
+          onClose={() => setIsLightboxOpen(false)} 
+          images={images}
+        />
+      </Suspense>
     </>
   );
 };

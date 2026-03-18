@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import PersonnelHeader from '@/widgets/Personnel/PersonnelHeader';
 import PersonnelSubNav from '@/widgets/Personnel/PersonnelSubNav';
-import PersonnelFilters from '@/widgets/Personnel/PersonnelFilters';
-import PersonnelTable from '@/widgets/Personnel/PersonnelTable';
+import Loading from '@/components/Loading';
+
+const PersonnelFilters = lazy(() => import('@/widgets/Personnel/PersonnelFilters'));
+const PersonnelTable = lazy(() => import('@/widgets/Personnel/PersonnelTable'));
 
 const Horses: React.FC = () => {
   useEffect(() => {
@@ -46,8 +48,10 @@ const Horses: React.FC = () => {
     <>
       <PersonnelHeader title="Horses" placeholder="Enter the name of a horses" />
       <PersonnelSubNav />
-      <PersonnelFilters />
-      <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/horse" />
+      <Suspense fallback={<Loading />}>
+        <PersonnelFilters />
+        <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/horse" />
+      </Suspense>
     </>
   );
 };

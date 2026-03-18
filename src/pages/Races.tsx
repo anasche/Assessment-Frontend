@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, lazy, Suspense } from 'react';
 import RacesHeader from '@/widgets/Races/RacesHeader';
-import UpcomingRace from '@/widgets/Races/UpcomingRace';
-import RaceGrid from '@/widgets/Races/RaceGrid';
+import Loading from '@/components/Loading';
+
+const UpcomingRace = lazy(() => import('@/widgets/Races/UpcomingRace'));
+const RaceGrid = lazy(() => import('@/widgets/Races/RaceGrid'));
 
 const Races: React.FC = () => {
   useEffect(() => {
@@ -11,8 +13,10 @@ const Races: React.FC = () => {
   return (
     <>
       <RacesHeader />
-      <UpcomingRace />
-      <RaceGrid />
+      <Suspense fallback={<Loading />}>
+        <UpcomingRace />
+        <RaceGrid />
+      </Suspense>
     </>
   );
 };

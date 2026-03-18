@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import Hero from '@/widgets/Home/Hero/Hero';
-import LiveEvent from '@/widgets/Home/LiveEvent/LiveEvent';
-import News from '@/widgets/Home/News/News';
-import BookExperience from '@/widgets/Home/BookExperience/BookExperience';
-import EventsCalendar from '@/widgets/Home/EventsCalendar/EventsCalendar';
-import Winners from '@/widgets/Home/Winners/Winners';
-import FAQ from '@/widgets/Home/FAQ/FAQ';
+import Loading from '@/components/Loading';
+
+// Lazy load widgets that are below the fold
+const LiveEvent = lazy(() => import('@/widgets/Home/LiveEvent/LiveEvent'));
+const News = lazy(() => import('@/widgets/Home/News/News'));
+const BookExperience = lazy(() => import('@/widgets/Home/BookExperience/BookExperience'));
+const EventsCalendar = lazy(() => import('@/widgets/Home/EventsCalendar/EventsCalendar'));
+const Winners = lazy(() => import('@/widgets/Home/Winners/Winners'));
+const FAQ = lazy(() => import('@/widgets/Home/FAQ/FAQ'));
 
 const Home: React.FC = () => {
   return (
     <>
       <Hero />
-      <LiveEvent />
-      <News />
-      <BookExperience />
-      <EventsCalendar />
-      <Winners />
-      <FAQ />
+      <Suspense fallback={<Loading />}>
+        <LiveEvent />
+        <News />
+        <BookExperience />
+        <EventsCalendar />
+        <Winners />
+        <FAQ />
+      </Suspense>
     </>
   );
 };
