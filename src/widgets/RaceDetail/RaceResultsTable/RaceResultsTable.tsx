@@ -10,7 +10,7 @@ const results = [
 
 const RaceResultsTable: React.FC = () => {
   return (
-    <section className="py-12 bg-white">
+    <section className="py-16 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="overflow-x-auto">
           <table className="w-full border-separate border-spacing-y-4">
@@ -18,7 +18,7 @@ const RaceResultsTable: React.FC = () => {
               {results.map((item, idx) => (
                 <tr key={idx} className="bg-gray-50/50 hover:bg-white hover:shadow-xl transition-all duration-300 rounded-[20px]">
                   <td className="p-6 first:rounded-l-[20px] text-center w-20">
-                    <div className="w-10 h-10 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-sm">
+                    <div className="w-10 h-10 rounded-full bg-[#161687] flex items-center justify-center text-white font-bold text-sm">
                       {item.rank}
                     </div>
                   </td>

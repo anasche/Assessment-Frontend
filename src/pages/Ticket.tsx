@@ -26,10 +26,10 @@ const TicketCard: React.FC<TicketCardProps> = ({
     <img
       src={image}
       alt={title}
-      className="absolute w-[624px] h-[367px] transition-transform duration-[5s] group-hover:scale-110"
+      className="absolute inset-0 w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110"
     />
     <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-6 md:p-8 text-center ring-1 ring-white/10">
-      <h3 className="font-syne font-bold text-xl md:text-3xl lg:text-[34px] text-white mb-6 md:mb-8 leading-[1.1] tracking-tightest max-w-[320px]">
+      <h3 className="font-syne font-bold text-xl md:text-3xl lg:text-[34px] text-white mb-6 md:mb-8 leading-[1.1] tracking-tightest max-w-[320px] whitespace-pre-line">
         {title}
       </h3>
 
@@ -64,28 +64,28 @@ const TicketCard: React.FC<TicketCardProps> = ({
 const Ticket: React.FC = () => {
   const legs = [
     {
-      title: "Moroccan leg of the UAEPresidentCup Series",
+      title: "Moroccan leg of the\nUAE President Cup Series",
       country: "Morocco",
       flag: "🇲🇦",
       date: "30 apr, 2025",
       image: BookingBg1,
     },
     {
-      title: "Moroccan leg of the UAEPresidentCup Series",
+      title: "Moroccan leg of the\nUAE President Cup Series",
       country: "Morocco",
       flag: "🇲🇦",
       date: "30 apr, 2025",
       image: BookingBg2,
     },
     {
-      title: "Track of Champions",
+      title: "Track of\nChampions",
       country: "Morocco",
       flag: "🇲🇦",
       date: "30 apr, 2025",
       image: BookingBg3,
     },
     {
-      title: "Battle of the Arabian Horses",
+      title: "Battle of the\nArabian Horses",
       country: "Morocco",
       flag: "🇲🇦",
       date: "30 apr, 2025",
@@ -95,12 +95,8 @@ const Ticket: React.FC = () => {
 
   return (
     <div className="bg-white" style={{ paddingTop: "93px" }}>
-      {/* Banner using the BookExperience widget with design text */}
-      <BookExperience
-        title="Morocco Stage 2026"
-        description="Witness the excellence of Arabian horse racing at Anfa Racecourse, Casablanca"
-        className="md:pt-8"
-      />
+      {/* Banner using the BookExperience widget */}
+      <BookExperience />
 
       {/* legs Grid */}
       <section className="py-12 md:py-24 max-w-[1728px] mx-auto px-4 md:px-8 xl:px-[77px]">

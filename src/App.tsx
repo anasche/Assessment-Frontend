@@ -7,7 +7,6 @@ import About from "@/pages/About";
 import News from "@/pages/News";
 import NewsDetail from "@/pages/NewsDetail";
 import Services from "@/pages/Services";
-import Contacts from "@/pages/Contact";
 import Races from "@/pages/Races";
 import RaceDetail from "@/pages/RaceDetail";
 import Gallery from "@/pages/Gallery";
@@ -30,7 +29,6 @@ function App() {
             <Route path="/news" element={<News />} />
             <Route path="/news/:slug" element={<NewsDetail />} />
             <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contacts />} />
             <Route path="/races" element={<Races />} />
             <Route path="/races/:slug" element={<RaceDetail />} />
             <Route path="/gallery" element={<Gallery />} />

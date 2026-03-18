@@ -10,7 +10,11 @@ import {
 } from "lucide-react";
 import Logo from "@/assets/logo/logo.png";
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onContactClick: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onContactClick }) => {
   return (
     <footer className="bg-white pt-20 pb-0 overflow-hidden font-dm-sans border-t border-gray-100">
       <div className="container mx-auto px-4 md:px-8 xl:px-[77px] mb-16">
@@ -131,12 +135,12 @@ const Footer: React.FC = () => {
             </h3>
             <ul className="flex flex-col gap-6 text-[15px] font-medium text-[#1a1a1a]/70">
               <li>
-                <Link
-                  to="/contact"
-                  className="hover:text-[#1B3A6B] transition-colors"
+                <button
+                  onClick={onContactClick}
+                  className="hover:text-[#1B3A6B] transition-colors text-left"
                 >
                   Contact us
-                </Link>
+                </button>
               </li>
               <li>
                 <Link
