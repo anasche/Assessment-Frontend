@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import GalleryHeader from '@/widgets/Gallery/GalleryHeader';
 import GalleryGrid from '@/widgets/Gallery/GalleryGrid';
 import GalleryLightbox from '@/widgets/Gallery/GalleryLightbox';
@@ -31,20 +29,16 @@ const Gallery: React.FC = () => {
   ];
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <GalleryHeader />
-        <GalleryGrid onAlbumClick={handleAlbumClick} />
-      </main>
-      <Footer />
+    <>
+      <GalleryHeader />
+      <GalleryGrid onAlbumClick={handleAlbumClick} />
 
       <GalleryLightbox 
         isOpen={isLightboxOpen} 
         onClose={() => setIsLightboxOpen(false)} 
         images={images}
       />
-    </div>
+    </>
   );
 };
 

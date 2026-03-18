@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
 import PersonnelHeader from '@/widgets/Personnel/PersonnelHeader';
 import PersonnelSubNav from '@/widgets/Personnel/PersonnelSubNav';
 import PersonnelFilters from '@/widgets/Personnel/PersonnelFilters';
@@ -45,16 +43,12 @@ const Owners: React.FC = () => {
   });
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <Navbar />
-      <main className="flex-grow">
-        <PersonnelHeader title="Owners" placeholder="Enter owner name" />
-        <PersonnelSubNav />
-        <PersonnelFilters />
-        <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/owner" />
-      </main>
-      <Footer />
-    </div>
+    <>
+      <PersonnelHeader title="Owners" placeholder="Enter owner name" />
+      <PersonnelSubNav />
+      <PersonnelFilters />
+      <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/owner" />
+    </>
   );
 };
 
