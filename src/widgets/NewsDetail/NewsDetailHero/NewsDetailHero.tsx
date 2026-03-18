@@ -1,10 +1,11 @@
 import React from "react";
 import News1 from "@/assets/images/news-detail/news-detail1.jpg";
 import Badge from "@/components/Badge";
+import Title from "@/components/Title";
 
 const NewsDetailHero: React.FC = () => {
   return (
-    <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden">
+    <section className="relative h-[80vh] min-h-[600px] w-full overflow-hidden" style={{ marginTop: '93px' }}>
       {/* Background Image */}
       <div className="absolute inset-0">
         <img
@@ -23,9 +24,9 @@ const NewsDetailHero: React.FC = () => {
               UAE President Cup
             </Badge>
             
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight font-syne uppercase tracking-tight max-w-4xl">
+            <Title as="h1" className="uppercase max-w-4xl">
               BURAAK Claims Victory in <br /> Thrilling Morocco Stage Finale
-            </h1>
+            </Title>
             
             <p className="text-white/80 text-lg md:text-xl font-medium font-sans max-w-3xl">
               UAE President Cup Series Crowns Champions at Casablanca's Historic

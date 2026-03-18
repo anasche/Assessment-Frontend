@@ -1,24 +1,23 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Layout from '@/components/Layout';
-import Loading from '@/components/Loading';
-
-// Lazy load pages
-const Home = lazy(() => import('./pages/Home'));
-const About = lazy(() => import('@/pages/About'));
-const News = lazy(() => import('@/pages/News'));
-const NewsDetail = lazy(() => import('@/pages/NewsDetail'));
-const Services = lazy(() => import('@/pages/Services'));
-const Contacts = lazy(() => import('@/pages/Contact'));
-const Races = lazy(() => import('@/pages/Races'));
-const RaceDetail = lazy(() => import('@/pages/RaceDetail'));
-const Gallery = lazy(() => import('@/pages/Gallery'));
-const Owners = lazy(() => import('@/pages/Personnel/Owners'));
-const Jockeys = lazy(() => import('@/pages/Personnel/Jockeys'));
-const Trainers = lazy(() => import('@/pages/Personnel/Trainers'));
-const Horses = lazy(() => import('@/pages/Personnel/Horses'));
-const HorseDetail = lazy(() => import('@/pages/Personnel/HorseDetail'));
-const OwnerDetail = lazy(() => import('@/pages/Personnel/OwnerDetail'));
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Layout from "@/components/Layout";
+import Loading from "@/components/Loading";
+import Home from "./pages/Home";
+import About from "@/pages/About";
+import News from "@/pages/News";
+import NewsDetail from "@/pages/NewsDetail";
+import Services from "@/pages/Services";
+import Contacts from "@/pages/Contact";
+import Races from "@/pages/Races";
+import RaceDetail from "@/pages/RaceDetail";
+import Gallery from "@/pages/Gallery";
+import Ticket from "@/pages/Ticket";
+import Owners from "@/pages/Personnel/Owners";
+import Jockeys from "@/pages/Personnel/Jockeys";
+import Trainers from "@/pages/Personnel/Trainers";
+import Horses from "@/pages/Personnel/Horses";
+import HorseDetail from "@/pages/Personnel/HorseDetail";
+import OwnerDetail from "@/pages/Personnel/OwnerDetail";
 
 function App() {
   return (
@@ -35,6 +34,7 @@ function App() {
             <Route path="/races" element={<Races />} />
             <Route path="/races/:slug" element={<RaceDetail />} />
             <Route path="/gallery" element={<Gallery />} />
+            <Route path="/ticket" element={<Ticket />} />
             <Route path="/personnel/owners" element={<Owners />} />
             <Route path="/personnel/jockeys" element={<Jockeys />} />
             <Route path="/personnel/trainers" element={<Trainers />} />

@@ -1,37 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
-import Logo from '@/assets/logo/logo.png';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { Menu, X, ChevronDown } from "lucide-react";
+import Logo from "@/assets/logo/logo.png";
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
 
+  const isNewsDetailPage =
+    location.pathname.startsWith("/news/") && location.pathname !== "/news";
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const navLinks = [
-    { name: 'Home', path: '/' },
-    { name: 'About', path: '/about' },
-    { name: 'News', path: '/news' },
-    { name: 'Gallery', path: '/gallery' },
-    { name: 'Events & Races', path: '/races' },
-    { name: 'Ticket', path: '#' },
-    { name: 'Horses & People', path: '/personnel/horses' },
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "News", path: "/news" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Events & Races", path: "/races" },
+    { name: "Ticket", path: "/ticket" },
+    { name: "Horses & People", path: "/personnel/horses" },
   ];
 
   return (
     <nav
       className={`fixed w-full z-50 transition-all duration-300 h-16 md:h-20 xl:h-[93px] backdrop-blur-sm
-        ${isScrolled
-          ? 'bg-white/95 shadow-sm border-b border-black/[0.06]'
-          : 'bg-white/[0.26]'
+        ${
+          isNewsDetailPage
+            ? "bg-white shadow-sm border-b border-black/[0.06]"
+            : isScrolled
+              ? "bg-white/95 shadow-sm border-b border-black/[0.06]"
+              : "bg-white/[0.26]"
         }`}
     >
       <div className="relative w-full h-full max-w-[1728px] mx-auto px-4 md:px-8 xl:px-0">
@@ -55,9 +61,10 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 className={`relative whitespace-nowrap text-[14px] leading-[20px] pb-[4px] transition-all duration-200 border-b-2 no-underline
-                  ${isActive
-                    ? 'font-bold text-[#1B3A6B] border-[#1B3A6B]'
-                    : 'font-normal text-[#1a1a1a] border-transparent hover:border-[#1B3A6B] hover:text-[#1B3A6B]'
+                  ${
+                    isActive
+                      ? "font-bold text-[#1B3A6B] border-[#1B3A6B]"
+                      : "font-normal text-[#1a1a1a] border-transparent hover:border-[#1B3A6B] hover:text-[#1B3A6B]"
                   }`}
               >
                 {link.name}
@@ -70,7 +77,7 @@ const Navbar: React.FC = () => {
         <div className="hidden xl:flex items-center absolute right-[77px] top-[25px] gap-8">
           {/* Live Now */}
           <div className="flex items-center gap-[10px] h-[20px]">
-             <span className="text-[14px] font-normal leading-[20px] text-[#1a1a1a] whitespace-nowrap">
+            <span className="text-[14px] font-normal leading-[20px] text-[#1a1a1a] whitespace-nowrap">
               Live now
             </span>
             <span className="inline-block w-[10px] h-[10px] rounded-full bg-red-600 shrink-0" />
@@ -81,7 +88,11 @@ const Navbar: React.FC = () => {
             <span className="text-[14px] font-normal leading-[20px] text-[#1a1a1a] whitespace-nowrap">
               Season
             </span>
-            <ChevronDown size={14} className="text-[#1a1a1a]" strokeWidth={1.5} />
+            <ChevronDown
+              size={14}
+              className="text-[#1a1a1a]"
+              strokeWidth={1.5}
+            />
           </div>
 
           {/* Language Button */}
