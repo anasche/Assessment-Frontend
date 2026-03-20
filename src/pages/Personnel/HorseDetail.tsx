@@ -19,37 +19,21 @@ const HorseDetail: React.FC = () => {
   ];
 
   const raceHeaders = [
-    { key: 'rank', label: 'Rank', align: 'left' as const },
-    { key: 'horse', label: 'Horse', align: 'left' as const },
-    { key: 'age', label: 'Age', align: 'center' as const },
-    { key: 'sex', label: 'Sex', align: 'center' as const },
-    { key: 'breed', label: 'Breed', align: 'center' as const },
-    { key: 'races', label: 'Races', align: 'center' as const },
-    { key: 'wins', label: 'Wins', align: 'center' as const },
-    { key: 'places', label: 'Non-winning prizes', align: 'center' as const },
-    { key: 'earnings', label: 'Earnings', align: 'center' as const },
-    { key: 'owners_premiums', label: 'Owners Premiums', align: 'center' as const },
-    { key: 'earnings_and_premiums', label: 'Earnings and Premiums', align: 'center' as const },
-    { key: 'earning_per_race', label: 'Earning / race', align: 'center' as const },
-    { key: 'rating', label: 'Rating', align: 'center' as const },
+    { key: 'date', label: 'Date', align: 'left' as const },
+    { key: 'course', label: 'Course', align: 'left' as const },
+    { key: 'distance', label: 'Distance', align: 'center' as const },
+    { key: 'discipline', label: 'Discipline', align: 'center' as const },
+    { key: 'jockey', label: 'Jockey', align: 'left' as const },
+    { key: 'weight', label: 'Weight', align: 'center' as const },
+    { key: 'pos', label: 'Pos', align: 'center' as const },
+    { key: 'prize', label: 'Prize', align: 'right' as const },
   ];
 
-  const raceData = Array(3).fill({
-    id: 'buraak',
-    rank: 2,
-    horse: "arrow eagle",
-    age: 4,
-    sex: "M",
-    breed: "PUR SANG",
-    races: 4,
-    wins: 4,
-    places: 0,
-    earnings: "162.100",
-    owners_premiums: "72.945",
-    earnings_and_premiums: "235.045",
-    earning_per_race: "40.525",
-    rating: "50.5"
-  });
+  const raceData = [
+    { id: 'race-1', date: '22/02/2025', course: 'MEYDAN', distance: '1600m', discipline: 'Flat', jockey: 'T. O\'SHEA', weight: '57.0kg', pos: '1st', prize: 'AED 45,000' },
+    { id: 'race-2', date: '08/02/2025', course: 'JEBEL ALI', distance: '1400m', discipline: 'Flat', jockey: 'T. O\'SHEA', weight: '58.5kg', pos: '2nd', prize: 'AED 15,000' },
+    { id: 'race-3', date: '15/01/2025', course: 'ABU DHABI', distance: '2200m', discipline: 'Flat', jockey: 'R. MULLEN', weight: '56.0kg', pos: '1st', prize: 'AED 60,000' },
+  ];
 
   return (
     <div className="pt-32">
@@ -177,7 +161,7 @@ const HorseDetail: React.FC = () => {
             <div className="flex items-center gap-4">
               <span className="text-[10px] font-bold text-[#0A0B14] uppercase tracking-wider">Year</span>
               <button className="flex items-center gap-3 px-6 py-2 bg-white border border-gray-100 rounded-full text-xs font-bold text-gray-500">
-                20205 <ChevronDown size={14} />
+                2025 <ChevronDown size={14} />
               </button>
             </div>
             <div className="flex items-center gap-4">
