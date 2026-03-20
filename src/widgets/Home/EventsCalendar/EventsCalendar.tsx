@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Calendar, ChevronDown, ArrowRight } from "lucide-react";
-import { EventCountryIcon, EventDateIcon } from "@/components/icons/PersonnelIcons";
+import { EventDateIcon } from "@/components/icons/PersonnelIcons";
+import EventCountryIcon from "@/assets/icons/event-country.svg";
 import FeaturedEvent from "@/assets/images/event-calendar/event-calendar.png";
 import Title from "@/components/Title";
 
@@ -264,16 +265,16 @@ const EventsCalendar: React.FC = () => {
                         {event.title}
                       </h4>
                       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6">
-                        <div className="flex items-start gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
+                        <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
                           <div className="rounded-[15px] overflow-hidden flex-shrink-0">
-                            <EventCountryIcon size={30} className="text-white/80 w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]" />
+                            <img src={EventCountryIcon} alt="Event Country Icon" className="w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px] object-contain" />
                           </div>
                           <div className="flex flex-col gap-1 min-w-0">
                             <span className="font-sans font-normal text-xs md:text-xs lg:text-[15px] leading-[100%] tracking-[-0.03em] text-white/40">Event Country</span>
                             <span className="font-syne font-bold text-sm md:text-sm lg:text-[20px] leading-[100%] tracking-[-0.03em] text-white truncate">{event.country}</span>
                           </div>
                         </div>
-                        <div className="flex items-start gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
+                        <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
                           <div className="rounded-[15px] overflow-hidden flex-shrink-0">
                             <EventDateIcon size={30} className="text-white/80 w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]" />
                           </div>
