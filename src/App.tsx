@@ -2,6 +2,7 @@ import React, { Suspense } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Layout from "@/components/Layout";
 import Loading from "@/components/Loading";
+import ScrollToTop from "@/components/ScrollToTop";
 import Home from "./pages/Home";
 import About from "@/pages/About";
 import News from "@/pages/News";
@@ -21,6 +22,7 @@ import OwnerDetail from "@/pages/Personnel/OwnerDetail";
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Suspense fallback={<Loading />}>
           <Routes>
