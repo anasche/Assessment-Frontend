@@ -1,5 +1,6 @@
 import React from 'react';
-import { Clock, Globe, User, Shield } from 'lucide-react';
+import { Clock, Globe } from 'lucide-react';
+import { JockeyIcon, TrainerIcon, OwnerIcon } from '@/components/icons/PersonnelIcons';
 import Winners1 from "@/assets/images/winners/winners.png";
 
 interface WinnerCardProps {
@@ -68,7 +69,7 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
           <div className="flex-1 grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 md:gap-4 min-w-0">
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-black/30 flex items-center justify-center flex-shrink-0">
-                <User size={10} className="text-white/60 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
+                <JockeyIcon size={10} className="text-white/60 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[8px] sm:text-[9px] text-white/40 font-medium">Jockey</span>
@@ -78,7 +79,7 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
 
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
               <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-black/30 flex items-center justify-center flex-shrink-0">
-                <Shield size={10} className="text-white/60 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
+                <TrainerIcon size={10} className="text-white/60 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[8px] sm:text-[9px] text-white/40 font-medium">Trainer</span>
@@ -88,7 +89,7 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
 
             <div className="flex items-center gap-1.5 sm:gap-2 min-w-0 col-span-2 sm:col-span-1">
               <div className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 rounded-full bg-black/30 flex items-center justify-center flex-shrink-0">
-                <Globe size={10} className="text-white/60 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
+                <OwnerIcon size={10} className="text-white/60 sm:w-3 sm:h-3 md:w-3.5 md:h-3.5" />
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[8px] sm:text-[9px] text-white/40 font-medium">Owner</span>
