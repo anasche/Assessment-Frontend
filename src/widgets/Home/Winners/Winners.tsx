@@ -5,12 +5,12 @@ import WinnerCard from './WinnerCard';
 
 const Winners: React.FC = () => {
   const winners = [
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km" },
-    { horse: 'arrow eagle', owner: 'Alii', trainer: 'Kayle', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km" },
+    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
+    { horse: 'arrow eagle', owner: 'Alii', trainer: 'Kayle', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
+    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
+    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
+    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
+    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
   ];
 
   return (

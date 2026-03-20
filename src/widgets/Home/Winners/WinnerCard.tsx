@@ -11,14 +11,41 @@ interface WinnerCardProps {
     rank?: number;
     time?: string;
     distance?: string;
+    title?: string;
   };
 }
 
 const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
+  // Function to split title into two lines intelligently
+  const splitTitle = (title?: string) => {
+    const defaultTitle = "Moroccan leg of the UAEPresidentCup Series";
+    const fullTitle = title || defaultTitle;
+    
+    // For the default title, use the specific split
+    if (fullTitle === defaultTitle) {
+      return {
+        line1: "Moroccan leg of the",
+        line2: "UAEPresidentCup Series"
+      };
+    }
+    
+    // For other titles, split at roughly the middle
+    const words = fullTitle.split(' ');
+    const midPoint = Math.ceil(words.length / 2);
+    
+    return {
+      line1: words.slice(0, midPoint).join(' '),
+      line2: words.slice(midPoint).join(' ')
+    };
+  };
+
+  const titleLines = splitTitle(winner.title);
+
   return (
     <div className="bg-[#141473] rounded-[20px] md:rounded-[30px] p-5 md:p-6 text-white shadow-xl relative overflow-hidden flex flex-col">
-      <h3 className="font-syne font-normal text-xl md:text-2xl lg:text-[35px] leading-tight md:leading-[35px] tracking-[-0.03em] text-center mb-6 px-2 break-words">
-        Moroccan leg of the UAEPresidentCup Series
+      <h3 className="font-syne font-normal text-[35px] leading-[35px] tracking-[-0.03em] text-center mb-6 px-2">
+        <div>{titleLines.line1}</div>
+        <div>{titleLines.line2}</div>
       </h3>
 
       <div className="flex items-center justify-center gap-4 md:gap-8 mb-6 md:mb-8">
