@@ -2,15 +2,10 @@ import React from "react";
 import { ArrowRight } from "lucide-react";
 import NewsCard from "@/components/NewsCard";
 import Title from "@/components/Title";
+import Slider from "@/components/Slider";
 import Event1 from "@/assets/images/news/news-1.png";
 import Event2 from "@/assets/images/news/news-1.png";
 import Event3 from "@/assets/images/news/news-1.png";
-
-// Swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
 
 const News: React.FC = () => {
   const newsItems = [
@@ -74,24 +69,11 @@ const News: React.FC = () => {
           </button> */}
         </div>
 
-        <div className="flex gap-2 mb-6 justify-end text-black">
-          <button className="custom-prev h-10 w-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
-            <ArrowRight className="rotate-180" size={18} />
-          </button>
-          <button className="custom-next h-10 w-10 border border-gray-200 rounded-full flex items-center justify-center hover:bg-gray-100 transition-colors">
-            <ArrowRight size={18} />
-          </button>
-        </div>
-
-        {/* Swiper */}
-        <Swiper
-          modules={[Navigation]}
-          navigation={{
-            prevEl: ".custom-prev",
-            nextEl: ".custom-next",
-          }}
+        <Slider
+          prevElClass="custom-prev"
+          nextElClass="custom-next"
+          navigationContainerClass="mb-6 md:mb-8"
           spaceBetween={24}
-          className="news-swiper"
           breakpoints={{
             640: { slidesPerView: 1 },
             768: { slidesPerView: 2 },
@@ -99,11 +81,9 @@ const News: React.FC = () => {
           }}
         >
           {newsItems.map((item, index) => (
-            <SwiperSlide key={index}>
-              <NewsCard {...item} />
-            </SwiperSlide>
+            <NewsCard key={index} {...item} />
           ))}
-        </Swiper>
+        </Slider>
       </div>
     </section>
   );

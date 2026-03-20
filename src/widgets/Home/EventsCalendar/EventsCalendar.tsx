@@ -1,15 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Calendar, ChevronDown, ArrowRight } from "lucide-react";
-import { EventDateIcon } from "@/components/icons/PersonnelIcons";
-import EventCountryIcon from "@/assets/icons/event-country.svg";
+import { Calendar, ChevronDown } from "lucide-react";
 import FeaturedEvent from "@/assets/images/event-calendar/event-calendar.png";
 import Title from "@/components/Title";
-
-// Swiper
-import { Swiper, SwiperSlide } from "swiper/react";
-import "swiper/css";
-import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import EventCard from "@/components/EventCard";
+import NoEvents from "./NoEvents";
+import Slider from "@/components/Slider";
 
 const EventsCalendar: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState(2025);
@@ -121,13 +116,13 @@ const EventsCalendar: React.FC = () => {
       <div className="w-full max-w-[1688px] mx-auto px-4 md:px-6 lg:px-[20px] py-12 md:py-16 lg:py-20">
 
         {/* Featured Image with everything overlaid - taller on mobile */}
-        <div className="w-full relative rounded-[20px] md:rounded-[30px] lg:rounded-[50px] overflow-hidden shadow-2xl aspect-[4/5] md:aspect-video lg:aspect-video">
+        <div className="w-full relative rounded-[20px] md:rounded-[30px] lg:rounded-[50px] overflow-hidden shadow-2xl aspect-[4/5] md:aspect-video lg:aspect-auto lg:h-[1000px] xl:h-[1423px]">
           <img
             src={FeaturedEvent}
             alt="Calendar Featured"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0" style={{ background: "linear-gradient(0deg, #3C3CB6 15.39%, #141473 44.85%, rgba(19, 19, 123, 0) 84.66%)" }} />
+          <div className="absolute inset-0" style={{ background: "linear-gradient(0deg, #3C3CB6 5%, #141473 35%, rgba(19, 19, 123, 0) 60%)" }} />
 
           {/* Title at top */}
           <div className="absolute top-4 md:top-6 lg:top-16 inset-x-0 flex flex-col items-center gap-1 md:gap-2 lg:gap-3 px-4 md:px-6">
@@ -140,7 +135,7 @@ const EventsCalendar: React.FC = () => {
           </div>
 
           {/* Nav + Slider at bottom */}
-          <div className="absolute bottom-4 md:bottom-4 lg:bottom-6 inset-x-0 px-4 md:px-6 lg:px-8">
+          <div className="absolute bottom-6 md:bottom-12 lg:bottom-24 xl:bottom-[80px] inset-x-0 px-4 md:px-6 lg:px-8">
             {/* Filters just above slider */}
             <div className="flex justify-center mb-3 md:mb-2 text-black">
               <div className="inline-flex items-center bg-white rounded-full px-3 md:px-4 lg:px-6 py-2 md:py-3 lg:py-4 gap-3 md:gap-4 lg:gap-6 text-xs md:text-sm lg:text-base relative">
@@ -224,21 +219,13 @@ const EventsCalendar: React.FC = () => {
               </div>
             </div>
             {/* Navigation Buttons Area - Fixed height to avoid jump */}
-            <div className={`flex justify-end mb-2 md:mb-2 h-8 md:h-9 ${filteredEvents.length > 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
-              <div className="flex gap-2 md:gap-3">
-                <button className="events-prev h-8 w-8 md:h-9 md:w-9 bg-black/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-black/90 transition-colors text-white">
-                  <ArrowRight className="rotate-180" size={14} />
-                </button>
-                <button className="events-next h-8 w-8 md:h-9 md:w-9 bg-black/80 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center hover:bg-black/90 transition-colors text-white">
-                  <ArrowRight size={14} />
-                </button>
-              </div>
-            </div>
-
-            <Swiper
-              key={`${selectedYear}-${selectedMonth}-${filteredEvents.length === 0}`} // Force re-render of swiper when filters OR empty state change
-              modules={[Navigation]}
-              navigation={{ prevEl: ".events-prev", nextEl: ".events-next" }}
+            <Slider
+              key={`${selectedYear}-${selectedMonth}-${filteredEvents.length === 0}`}
+              prevElClass="events-prev"
+              nextElClass="events-next"
+              variant="dark"
+              navigationContainerClass={`mb-3 md:mb-6 ${filteredEvents.length > 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+              navButtonClass="!h-8 !w-8 md:!h-9 md:!w-9 !px-0"
               spaceBetween={12}
               centeredSlides={filteredEvents.length === 0}
               allowTouchMove={filteredEvents.length > 1}
@@ -250,51 +237,15 @@ const EventsCalendar: React.FC = () => {
                 1024: { slidesPerView: 2.5, spaceBetween: 16 },
                 1280: { slidesPerView: 3, spaceBetween: 16 },
               }}
-              className="events-swiper"
             >
               {filteredEvents.length > 0 ? (
                 filteredEvents.map((event, idx) => (
-                  <SwiperSlide key={idx}>
-                    <div className="bg-[#05061F]/80 backdrop-blur-md border border-white/10 rounded-[15px] md:rounded-[20px] lg:rounded-[30px] p-4 md:p-4 lg:p-5 hover:border-white/30 transition-all flex flex-col justify-between mb-6 md:mb-8 lg:mb-[50px] min-h-[200px] md:min-h-[180px] lg:min-h-[208px]">
-                      <div className="flex justify-center mb-3">
-                        <span className="bg-[#121278] px-3 py-1 rounded-full text-[9px] md:text-[9px] font-bold text-white/60 tracking-wider">
-                          {event.daysRemaining > 0 ? `${event.daysRemaining} Days remaining` : "Completed"}
-                        </span>
-                      </div>
-                      <h4 className="font-syne font-normal text-base md:text-xl lg:text-[35px] leading-tight md:leading-[1.2] tracking-[-0.03em] text-center text-white mb-4 px-1 line-clamp-2">
-                        {event.title}
-                      </h4>
-                      <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 md:gap-6">
-                        <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
-                          <div className="rounded-[15px] overflow-hidden flex-shrink-0">
-                            <img src={EventCountryIcon} alt="Event Country Icon" className="w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px] object-contain" />
-                          </div>
-                          <div className="flex flex-col gap-1 min-w-0">
-                            <span className="font-sans font-normal text-xs md:text-xs lg:text-[15px] leading-[100%] tracking-[-0.03em] text-white/40">Event Country</span>
-                            <span className="font-syne font-bold text-sm md:text-sm lg:text-[20px] leading-[100%] tracking-[-0.03em] text-white truncate">{event.country}</span>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
-                          <div className="rounded-[15px] overflow-hidden flex-shrink-0">
-                            <EventDateIcon size={30} className="text-white/80 w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]" />
-                          </div>
-                          <div className="flex flex-col gap-1 min-w-0">
-                            <span className="font-sans font-normal text-xs md:text-xs lg:text-[15px] leading-[100%] tracking-[-0.03em] text-white/40">Event Date</span>
-                            <span className="font-syne font-bold text-sm md:text-sm lg:text-[20px] leading-[100%] tracking-[-0.03em] text-white truncate">{event.date}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </SwiperSlide>
+                  <EventCard key={idx} {...event} />
                 ))
               ) : (
-                <SwiperSlide>
-                  <div className="bg-[#05061F]/80 backdrop-blur-md border border-white/10 rounded-[15px] md:rounded-[20px] lg:rounded-[30px] p-4 md:p-4 lg:p-5 flex flex-col items-center justify-center mb-6 md:mb-8 lg:mb-[50px] min-h-[200px] md:min-h-[180px] lg:min-h-[208px] w-full max-w-[350px] md:max-w-sm text-white/40 italic text-center mx-auto">
-                    No events scheduled for this period
-                  </div>
-                </SwiperSlide>
+                <NoEvents />
               )}
-            </Swiper>
+            </Slider>
           </div>
         </div>
       </div>
