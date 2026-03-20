@@ -54,13 +54,17 @@ export const EventCountryIcon: React.FC<IconProps> = ({ size = 16, className = "
     {/* Background circle with specific color */}
     <circle cx="15" cy="15" r="15" fill="#000034" />
     {/* Globe outline */}
-    <circle cx="15" cy="15" r="8" fill="none" stroke="currentColor" strokeWidth="1.8"/>
-    {/* Globe continent shapes */}
-    <path d="M10 12c1.5-1 3-1.5 5-1 2 0.5 3 1.5 3 3s-1 2.5-2 3c-1 0.5-2 0-3-0.5s-2-1-3-1.5c-1-0.5-1-2 0-3z" fill="currentColor"/>
-    <path d="M18 10c0.5 1 0.5 2 0 3s-1.5 1.5-2.5 1c-1-0.5-1-1.5-0.5-2.5s1.5-2 3-1.5z" fill="currentColor"/>
+    <circle cx="15" cy="15" r="7.5" fill="none" stroke="currentColor" strokeWidth="1.2"/>
+    {/* Vertical meridian lines */}
+    <ellipse cx="15" cy="15" rx="3" ry="7.5" fill="none" stroke="currentColor" strokeWidth="1"/>
+    <ellipse cx="15" cy="15" rx="6" ry="7.5" fill="none" stroke="currentColor" strokeWidth="1"/>
+    {/* Horizontal latitude lines */}
+    <line x1="8.5" y1="11" x2="21.5" y2="11" stroke="currentColor" strokeWidth="1"/>
+    <line x1="8.5" y1="15" x2="21.5" y2="15" stroke="currentColor" strokeWidth="1"/>
+    <line x1="8.5" y1="19" x2="21.5" y2="19" stroke="currentColor" strokeWidth="1"/>
     {/* Location pin */}
-    <path d="M20 8c-1.1 0-2 0.9-2 2 0 2 2 4 2 4s2-2 2-4c0-1.1-0.9-2-2-2z" fill="currentColor"/>
-    <circle cx="20" cy="10" r="0.8" fill="#000034"/>
+    <path d="M19.5 7c-1.4 0-2.5 1.1-2.5 2.5 0 2.5 2.5 5 2.5 5s2.5-2.5 2.5-5c0-1.4-1.1-2.5-2.5-2.5z" fill="currentColor"/>
+    <circle cx="19.5" cy="9.5" r="1" fill="#000034"/>
   </svg>
 );
 
