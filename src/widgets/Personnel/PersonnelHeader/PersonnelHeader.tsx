@@ -9,12 +9,12 @@ interface PersonnelHeaderProps {
 
 const PersonnelHeader: React.FC<PersonnelHeaderProps> = ({ title, placeholder }) => {
   return (
-    <section style={{ paddingTop: '93px' }} className="pb-6 md:pb-8 bg-white">
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 text-center">
-        <Title as="h1" dark={true} className="mb-3 md:mb-4 text-2xl md:text-3xl lg:text-4xl xl:text-5xl">
+    <section className="pt-32 pb-16 bg-white">
+      <div className="container mx-auto px-4 text-center">
+        <h1 className="font-syne font-medium text-[40px] leading-[49px] tracking-[-0.03em] text-[#0A0B14]">
           {title}
-        </Title>
-        <p className="text-gray-400 text-sm md:text-base mb-8 md:mb-12">
+        </h1>
+        <p className="font-sans font-normal text-[15px] leading-[20px] tracking-[-0.03em] text-[#000000] max-w-4xl mx-auto mb-8 md:mb-12">
           Here you will find the {title.toLowerCase()}' honours list.
         </p>
         

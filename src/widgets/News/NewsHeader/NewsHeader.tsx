@@ -3,12 +3,12 @@ import Title from '@/components/Title';
 
 const NewsHeader: React.FC = () => {
   return (
-    <section className="bg-white pt-32 pb-16 px-4 border-b border-gray-100">
-      <div className="container mx-auto max-w-7xl text-center">
-        <Title as="h1" dark={true} className="mb-4 uppercase">
+    <section className="pt-32 pb-16 bg-white border-b border-gray-100">
+      <div className="container mx-auto px-4 text-center">
+        <h1 className="font-syne font-medium text-[40px] leading-[49px] tracking-[-0.03em] text-[#0A0B14]">
           News
-        </Title>
-        <p className="text-gray-500 font-medium tracking-[0.2em] uppercase text-xs">
+        </h1>
+        <p className="font-sans font-normal text-[15px] leading-[20px] tracking-[-0.03em] text-[#000000] max-w-4xl mx-auto">
           Explore and read latest news
         </p>
       </div>

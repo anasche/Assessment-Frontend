@@ -15,7 +15,7 @@ const RaceGrid: React.FC = () => {
   });
 
   return (
-    <section className="py-12 md:py-16 lg:py-20 bg-white">
+    <section className="pt-8 md:pt-12 pb-12 md:pb-16 lg:pb-20 bg-white">
       <div className="mx-auto px-4 md:px-6 lg:px-[20px] max-w-[1688px]">
         {/* Filters */}
         <div className="flex justify-center mb-8 md:mb-12 lg:mb-16">
