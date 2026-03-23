@@ -55,7 +55,7 @@ const Hero: React.FC = () => {
           All the latest info about Moroccan leg of the series
         </p>
         <div className="flex justify-center mt-2 xl:mt-0 fade">
-          <ExploreLink to="/live-stream">View Upcoming Race</ExploreLink>
+          <ExploreLink to="#">View Upcoming Race</ExploreLink>
         </div>
       </div>
 
