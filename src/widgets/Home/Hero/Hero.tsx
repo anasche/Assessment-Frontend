@@ -30,9 +30,12 @@ const Hero: React.FC = () => {
     { name: "Sponsor 8", logo: sponsor8 },
     { name: "Sponsor 9", logo: sponsor9 },
   ];
-const { main } = useHero();
+  const { main } = useHero();
   return (
-    <section ref={main} className="relative w-full mx-auto h-screen flex flex-col justify-end overflow-hidden">
+    <section
+      ref={main}
+      className="relative w-full mx-auto h-screen flex flex-col justify-end overflow-hidden"
+    >
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0 cover">
         <img
@@ -52,13 +55,7 @@ const { main } = useHero();
           All the latest info about Moroccan leg of the series
         </p>
         <div className="flex justify-center mt-2 xl:mt-0 fade">
-          <ExploreLink to="/live-stream">FREE LIVE STREAM</ExploreLink>
-          {/* <Button className="uppercase shadow-2xl shadow-blue-500/20">
-            FREE LIVE STREAM
-            <div className="bg-white/20 p-1 rounded-full">
-              <Play size={14} fill="white" />
-            </div>
-          </Button> */}
+          <ExploreLink to="/live-stream">View Upcoming Race</ExploreLink>
         </div>
       </div>
 

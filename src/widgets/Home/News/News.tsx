@@ -59,14 +59,6 @@ const News: React.FC = () => {
               Stay updated with the latest from the world of horse racing
             </p>
           </div>
-
-          {/* <button className="flex items-center gap-2 text-blue-600 font-bold mt-4 md:mt-0 group uppercase tracking-widest text-sm">
-            View All News
-            <ArrowRight
-              size={18}
-              className="group-hover:translate-x-1 transition-transform"
-            />
-          </button> */}
         </div>
 
         <Slider

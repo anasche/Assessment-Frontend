@@ -17,9 +17,7 @@ const BookExperience: React.FC = () => {
 
       <div className="w-full max-w-[1728px] mx-auto px-6 xl:px-[77px] relative z-10">
         <div className="max-w-xl">
-          <Badge className="mb-6">
-            UAE President Cup
-          </Badge>
+          <Badge className="mb-6">UAE President Cup</Badge>
           <Title dark={false} className="mb-6">
             Book Your Experience
           </Title>
@@ -27,7 +25,7 @@ const BookExperience: React.FC = () => {
             Reserve your spot for the most prestigious horse racing events in
             the region. Experience luxury seating and exceptional hospitality.
           </p>
-          <ExploreLink to="#">BOOK EXPERIENCE</ExploreLink>
+          <ExploreLink to="#">Book Experience</ExploreLink>
         </div>
       </div>
     </section>

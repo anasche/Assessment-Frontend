@@ -37,7 +37,7 @@ const TicketCard: React.FC<TicketCardProps> = ({
         <div className="flex items-center gap-2 md:gap-3 text-white">
           <Globe size={18} className="text-white/60" />
           <div className="flex flex-col items-start translate-y-0.5">
-            <span className="text-[8px] md:text-[10px] font-bold text-white/40 tracking-widest uppercase mb-0.5">
+            <span className="text-[8px] md:text-[10px] font-bold text-white/40 tracking-widest mb-0.5">
               Event Country
             </span>
             <span className="text-xs md:text-[14px] font-bold flex items-center gap-1.5">
@@ -48,7 +48,7 @@ const TicketCard: React.FC<TicketCardProps> = ({
         <div className="flex items-center gap-2 md:gap-3 text-white">
           <Calendar size={18} className="text-white/60" />
           <div className="flex flex-col items-start translate-y-0.5">
-            <span className="text-[8px] md:text-[10px] font-bold text-white/40 tracking-widest uppercase mb-0.5">
+            <span className="text-[8px] md:text-[10px] font-bold text-white/40 tracking-widest mb-0.5">
               Event Date
             </span>
             <span className="text-xs md:text-[14px] font-bold">{date}</span>

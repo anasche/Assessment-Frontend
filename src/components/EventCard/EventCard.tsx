@@ -39,14 +39,14 @@ const EventCard: React.FC<EventCardProps> = ({
         {/* Country */}
         <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
           <div className="rounded-[15px] overflow-hidden flex-shrink-0">
-            <img 
-              src={countryIcon} 
-              alt="Country Icon" 
-              className="w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px] object-contain" 
+            <img
+              src={countryIcon}
+              alt="Country Icon"
+              className="w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px] object-contain"
             />
           </div>
           <div className="flex flex-col gap-0.5 min-w-0">
-            <span className="font-sans font-normal text-[10px] lg:text-[12px] uppercase tracking-[0.1em] text-white/40">
+            <span className="font-sans font-normal text-[10px] lg:text-[12px]  tracking-[0.1em] text-white/40">
               Event Country
             </span>
             <span className="font-syne font-bold text-sm md:text-base lg:text-[18px] text-white truncate">
@@ -58,13 +58,13 @@ const EventCard: React.FC<EventCardProps> = ({
         {/* Date */}
         <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
           <div className="rounded-[15px] overflow-hidden flex-shrink-0">
-            <EventDateIcon 
-              size={30} 
-              className="text-white/80 w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]" 
+            <EventDateIcon
+              size={30}
+              className="text-white/80 w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]"
             />
           </div>
           <div className="flex flex-col gap-0.5 min-w-0">
-            <span className="font-sans font-normal text-[10px] lg:text-[12px] uppercase tracking-[0.1em] text-white/40">
+            <span className="font-sans font-normal text-[10px] lg:text-[12px]  tracking-[0.1em] text-white/40">
               Event Date
             </span>
             <span className="font-syne font-bold text-sm md:text-base lg:text-[18px] text-white truncate">
@@ -78,7 +78,10 @@ const EventCard: React.FC<EventCardProps> = ({
 
   if (slug) {
     return (
-      <Link to={`/races/${slug}`} className="group block h-full hover:scale-[1.02] transition-transform duration-500">
+      <Link
+        to={`/races/${slug}`}
+        className="group block h-full hover:scale-[1.02] transition-transform duration-500"
+      >
         {content}
       </Link>
     );

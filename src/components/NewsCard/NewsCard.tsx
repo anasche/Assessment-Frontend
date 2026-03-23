@@ -32,7 +32,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
         />
       </div>
       <div className="p-10 flex flex-col flex-grow">
-        <h3 className="text-xl font-black text-[#0A0B14] mb-4 group-hover:text-blue-600 transition-colors leading-tight tracking-tight uppercase">
+        <h3 className="text-xl font-black text-[#0A0B14] mb-4 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
           {title}
         </h3>
         <p className="text-gray-400 text-xs leading-relaxed mb-8 line-clamp-3">

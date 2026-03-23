@@ -78,10 +78,10 @@ const BoardMembers: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               </div>
-              <h3 className="text-xl font-bold text-gray-900 mb-1 font-serif uppercase tracking-tight">
+              <h3 className="text-xl font-bold text-gray-900 mb-1 font-serif tracking-tight">
                 {member.name}
               </h3>
-              <p className="text-gray-500 text-sm font-medium tracking-widest uppercase">
+              <p className="text-gray-500 text-sm font-medium tracking-widest">
                 {member.position}
               </p>
             </div>

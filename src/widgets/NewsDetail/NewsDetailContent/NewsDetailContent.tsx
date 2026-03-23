@@ -11,7 +11,7 @@ const NewsDetailContent: React.FC = () => {
         <div className="space-y-12">
           {/* Date Badge */}
           <div className="flex justify-end">
-            <span className="bg-gray-100 text-gray-600 text-[10px] font-medium uppercase tracking-widest px-4 py-2 rounded-full">
+            <span className="bg-gray-100 text-gray-600 text-[10px] font-medium tracking-widest px-4 py-2 rounded-full">
               March 15, 2024 - 10:49 AM
             </span>
           </div>
@@ -28,10 +28,10 @@ const NewsDetailContent: React.FC = () => {
                 👤
               </div>
               <div>
-                <span className="text-xs text-gray-500 uppercase tracking-widest block font-medium">
+                <span className="text-xs text-gray-500 tracking-widest block font-medium">
                   By
                 </span>
-                <span className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+                <span className="text-sm font-bold text-gray-900 tracking-wide">
                   Mustafa Hassan
                 </span>
               </div>
@@ -104,7 +104,7 @@ const NewsDetailContent: React.FC = () => {
                 victory is a testament to the quality of Arabian breeding in
                 Morocco and the dedication of our training programs."
               </p>
-              <cite className="text-sm font-bold text-gray-600 uppercase tracking-widest not-italic">
+              <cite className="text-sm font-bold text-gray-600 tracking-widest not-italic">
                 — Mohamed Bessouit, Trainer
               </cite>
             </div>
@@ -117,7 +117,7 @@ const NewsDetailContent: React.FC = () => {
                 className="w-full h-auto aspect-video object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <p className="text-white/80 text-xs uppercase tracking-widest text-center">
+                <p className="text-white/80 text-xs tracking-widest text-center">
                   BURAAK crosses the finish line ahead of the competition at
                   Anfa Racecourse - Casablanca
                 </p>

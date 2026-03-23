@@ -53,7 +53,7 @@ const GalleryGrid: React.FC<GalleryGridProps> = ({ onAlbumClick }) => {
               <h3 className="text-xl font-bold text-[#0A0B14] mb-1 group-hover:text-blue-600 transition-colors">
                 {album.title}
               </h3>
-              <p className="text-gray-400 text-sm font-medium uppercase tracking-wider">
+              <p className="text-gray-400 text-sm font-medium tracking-wider">
                 {album.imageCount} Image
               </p>
             </div>

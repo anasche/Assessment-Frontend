@@ -124,7 +124,7 @@ const Navbar: React.FC = () => {
                 key={link.name}
                 to={link.path}
                 onClick={() => setIsOpen(false)}
-                className="block text-gray-900 text-sm font-semibold tracking-widest uppercase hover:text-[#1B3A6B] transition-colors"
+                className="block text-gray-900 text-sm font-semibold tracking-widest hover:text-[#1B3A6B] transition-colors"
               >
                 {link.name}
               </Link>
