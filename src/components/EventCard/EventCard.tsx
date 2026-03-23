@@ -1,14 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { EventDateIcon } from "@/components/icons/PersonnelIcons";
-import EventCountryIconDefault from "@/assets/icons/event-country.svg";
+import { EventCountryIcon, EventDateIcon } from "@/components/icons/PersonnelIcons";
 
 interface EventCardProps {
   title: string;
   date: string;
   country: string;
   daysRemaining: number;
-  countryIcon?: string;
   slug?: string;
 }
 
@@ -17,7 +15,6 @@ const EventCard: React.FC<EventCardProps> = ({
   date,
   country,
   daysRemaining,
-  countryIcon = EventCountryIconDefault,
   slug,
 }) => {
   const content = (
@@ -39,10 +36,9 @@ const EventCard: React.FC<EventCardProps> = ({
         {/* Country */}
         <div className="flex items-center gap-2 md:gap-3 min-w-0 flex-1 w-full md:w-auto">
           <div className="rounded-[15px] overflow-hidden flex-shrink-0">
-            <img
-              src={countryIcon}
-              alt="Country Icon"
-              className="w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px] object-contain"
+            <EventCountryIcon
+              size={30}
+              className="text-white w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]"
             />
           </div>
           <div className="flex flex-col gap-0.5 min-w-0">
@@ -60,7 +56,7 @@ const EventCard: React.FC<EventCardProps> = ({
           <div className="rounded-[15px] overflow-hidden flex-shrink-0">
             <EventDateIcon
               size={30}
-              className="text-white/80 w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]"
+              className="text-white w-5 h-5 md:w-[25px] md:h-[25px] lg:w-[30px] lg:h-[30px]"
             />
           </div>
           <div className="flex flex-col gap-0.5 min-w-0">

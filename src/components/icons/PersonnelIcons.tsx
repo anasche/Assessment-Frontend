@@ -48,19 +48,19 @@ export const EventCountryIcon: React.FC<IconProps> = ({ size = 16, className = "
     viewBox="0 0 30 30" 
     className={className}
   >
-    {/* Background circle with specific color */}
+    {/* Background circle with dark blue background */}
     <circle cx="15" cy="15" r="15" fill="#000034" />
     {/* Globe outline */}
-    <circle cx="15" cy="15" r="7.5" fill="none" stroke="currentColor" strokeWidth="1.2"/>
+    <circle cx="15" cy="15" r="7.5" fill="none" stroke="#8C8CBE" strokeWidth="1.2"/>
     {/* Vertical meridian lines */}
-    <ellipse cx="15" cy="15" rx="3" ry="7.5" fill="none" stroke="currentColor" strokeWidth="1"/>
-    <ellipse cx="15" cy="15" rx="6" ry="7.5" fill="none" stroke="currentColor" strokeWidth="1"/>
+    <ellipse cx="15" cy="15" rx="3" ry="7.5" fill="none" stroke="#8C8CBE" strokeWidth="1"/>
+    <ellipse cx="15" cy="15" rx="6" ry="7.5" fill="none" stroke="#8C8CBE" strokeWidth="1"/>
     {/* Horizontal latitude lines */}
-    <line x1="8.5" y1="11" x2="21.5" y2="11" stroke="currentColor" strokeWidth="1"/>
-    <line x1="8.5" y1="15" x2="21.5" y2="15" stroke="currentColor" strokeWidth="1"/>
-    <line x1="8.5" y1="19" x2="21.5" y2="19" stroke="currentColor" strokeWidth="1"/>
+    <line x1="8.5" y1="11" x2="21.5" y2="11" stroke="#8C8CBE" strokeWidth="1"/>
+    <line x1="8.5" y1="15" x2="21.5" y2="15" stroke="#8C8CBE" strokeWidth="1"/>
+    <line x1="8.5" y1="19" x2="21.5" y2="19" stroke="#8C8CBE" strokeWidth="1"/>
     {/* Location pin */}
-    <path d="M19.5 7c-1.4 0-2.5 1.1-2.5 2.5 0 2.5 2.5 5 2.5 5s2.5-2.5 2.5-5c0-1.4-1.1-2.5-2.5-2.5z" fill="currentColor"/>
+    <path d="M19.5 7c-1.4 0-2.5 1.1-2.5 2.5 0 2.5 2.5 5 2.5 5s2.5-2.5 2.5-5c0-1.4-1.1-2.5-2.5-2.5z" fill="#8C8CBE"/>
     <circle cx="19.5" cy="9.5" r="1" fill="#000034"/>
   </svg>
 );
@@ -72,14 +72,14 @@ export const EventDateIcon: React.FC<IconProps> = ({ size = 16, className = "" }
     viewBox="0 0 30 30" 
     className={className}
   >
-    {/* Background circle with specific color */}
+    {/* Background circle with dark blue background */}
     <circle cx="15" cy="15" r="15" fill="#000034" />
     {/* Calendar icon */}
-    <rect x="8" y="9" width="14" height="12" rx="2" ry="2" fill="none" stroke="currentColor" strokeWidth="1.5"/>
-    <path d="M12 7v4M18 7v4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
-    <path d="M8 13h14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+    <rect x="8" y="9" width="14" height="12" rx="2" ry="2" fill="none" stroke="#8C8CBE" strokeWidth="1.5"/>
+    <path d="M12 7v4M18 7v4" stroke="#8C8CBE" strokeWidth="1.5" strokeLinecap="round"/>
+    <path d="M8 13h14" stroke="#8C8CBE" strokeWidth="1.5" strokeLinecap="round"/>
     {/* Calendar binding rings */}
-    <circle cx="12" cy="8" r="1.5" fill="currentColor"/>
-    <circle cx="18" cy="8" r="1.5" fill="currentColor"/>
+    <circle cx="12" cy="8" r="1.5" fill="#8C8CBE"/>
+    <circle cx="18" cy="8" r="1.5" fill="#8C8CBE"/>
   </svg>
 );

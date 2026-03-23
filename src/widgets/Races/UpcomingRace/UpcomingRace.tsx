@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { MapPin, Calendar } from "lucide-react";
 import Races1 from "@/assets/images/races/races1.png";
-import EventCountryIconDefault from "@/assets/icons/event-country.svg";
-import { EventDateIcon } from "@/components/icons/PersonnelIcons";
+import { EventCountryIcon, EventDateIcon } from "@/components/icons/PersonnelIcons";
 
 const UpcomingRace: React.FC = () => {
   const [timeLeft, setTimeLeft] = useState({
@@ -67,14 +65,13 @@ const UpcomingRace: React.FC = () => {
                 {/* Event Country */}
                 <div className="flex items-center gap-3 md:gap-4 lg:gap-5 min-w-0">
                   <div className="flex-shrink-0 rounded-[15px] overflow-hidden">
-                    <img
-                      src={EventCountryIconDefault}
-                      alt="Country Icon"
-                      className="w-[30px] h-[30px] object-contain"
+                    <EventCountryIcon
+                      size={30}
+                      className="text-white w-[30px] h-[30px]"
                     />
                   </div>
                   <div className="flex flex-col gap-0.5 md:gap-1 text-left min-w-0">
-                    <span className="text-white/60 text-[10px] md:text-xs tracking-widest font-sans uppercase">
+                    <span className="text-white/60 text-[10px] md:text-xs tracking-widest font-sans">
                       Event Country
                     </span>
                     <span className="text-2xl md:text-3xl lg:text-[40px] font-syne font-bold flex items-center gap-2 whitespace-nowrap">
@@ -91,11 +88,11 @@ const UpcomingRace: React.FC = () => {
                   <div className="flex-shrink-0 rounded-[15px] overflow-hidden">
                     <EventDateIcon
                       size={30}
-                      className="text-white/80 w-[30px] h-[30px]"
+                      className="text-white w-[30px] h-[30px]"
                     />
                   </div>
                   <div className="flex flex-col gap-0.5 md:gap-1 text-left min-w-0">
-                    <span className="text-white/60 text-[10px] md:text-xs tracking-widest font-sans uppercase">
+                    <span className="text-white/60 text-[10px] md:text-xs tracking-widest font-sans">
                       Event Date
                     </span>
                     <span className="text-2xl md:text-3xl lg:text-[40px] font-syne font-bold whitespace-nowrap">
@@ -134,7 +131,7 @@ const UpcomingRace: React.FC = () => {
                     { label: "Seconds", value: timeLeft.seconds },
                   ].map((item, i) => (
                     <div key={i} className="flex flex-col items-center flex-1">
-                      <div className="bg-[#1C2366] rounded-xl md:rounded-[20px] w-full aspect-[1/1.1] flex items-center justify-center mb-3 border border-white/5">
+                      <div className="bg-[#151585] rounded-xl md:rounded-[20px] w-full aspect-[1/1.1] flex items-center justify-center mb-3 border border-white/5">
                         <span className="text-3xl md:text-4xl lg:text-[44px] font-syne font-bold text-white leading-none">
                           {item.value.toString().padStart(2, "0")}
                         </span>
