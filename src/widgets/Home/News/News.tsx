@@ -1,8 +1,8 @@
 import React from "react";
 import { ArrowRight } from "lucide-react";
-import NewsCard from "@/components/NewsCard";
-import Title from "@/components/Title";
-import Slider from "@/components/Slider";
+import NewsCard from "@/components/NewsCard/NewsCard";
+import Title from "@/components/Title/Title";
+import Slider from "@/components/Slider/Slider";
 import Event1 from "@/assets/images/news/news-1.png";
 import Event2 from "@/assets/images/news/news-1.png";
 import Event3 from "@/assets/images/news/news-1.png";

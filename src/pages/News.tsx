@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import NewsHeader from '@/widgets/News/NewsHeader/NewsHeader';
-import Loading from '@/components/Loading';
+import Loading from '@/components/Loading/Loading';
 
 const NewsGrid = lazy(() => import('@/widgets/News/NewsGrid/NewsGrid'));
 

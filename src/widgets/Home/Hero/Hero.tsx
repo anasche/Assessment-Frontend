@@ -1,8 +1,8 @@
 import React from "react";
 import HeroBanner from "@/assets/images/banner/hero-banner.png";
-import Button from "@/components/Button";
-import Title from "@/components/Title";
-import Marquee from "@/components/Marquee";
+import Button from "@/components/Button/Button";
+import Title from "@/components/Title/Title";
+import Marquee from "@/components/Marquee/Marquee";
 import { Play } from "lucide-react";
 
 // Import sponsor images

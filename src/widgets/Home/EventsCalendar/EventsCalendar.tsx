@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Calendar, ChevronDown } from "lucide-react";
 import FeaturedEvent from "@/assets/images/event-calendar/event-calendar.png";
-import Title from "@/components/Title";
-import EventCard from "@/components/EventCard";
+import Title from "@/components/Title/Title";
+import EventCard from "@/components/EventCard/EventCard";
 import NoEvents from "./NoEvents";
-import Slider from "@/components/Slider";
+import Slider from "@/components/Slider/Slider";
 
 const EventsCalendar: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState(2025);

@@ -1,6 +1,6 @@
 import React from "react";
 import About1 from "@/assets/images/about/about-1.jpg";
-import Title from "@/components/Title";
+import Title from "@/components/Title/Title";
 
 const AboutHero: React.FC = () => {
   return (

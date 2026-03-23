@@ -1,4 +1,4 @@
-import NewsCard from '@/components/NewsCard';
+import NewsCard from '@/components/NewsCard/NewsCard';
 import Event1 from "@/assets/images/news/news-1.png";
 
 

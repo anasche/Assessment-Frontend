@@ -1,7 +1,7 @@
 import React, { useEffect, lazy, Suspense } from 'react';
 import PersonnelHeader from '@/widgets/Personnel/PersonnelHeader';
 import PersonnelSubNav from '@/widgets/Personnel/PersonnelSubNav';
-import Loading from '@/components/Loading';
+import Loading from '@/components/Loading/Loading';
 
 const PersonnelFilters = lazy(() => import('@/widgets/Personnel/PersonnelFilters'));
 const PersonnelTable = lazy(() => import('@/widgets/Personnel/PersonnelTable'));

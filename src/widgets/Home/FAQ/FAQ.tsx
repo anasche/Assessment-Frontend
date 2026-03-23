@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
-import Title from '@/components/Title';
+import Title from '@/components/Title/Title';
 
 const FAQ: React.FC = () => {
   const faqs = [
