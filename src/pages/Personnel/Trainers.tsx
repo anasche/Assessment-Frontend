@@ -1,13 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import PersonnelHeader from '@/widgets/Personnel/PersonnelHeader';
 import PersonnelSubNav from '@/widgets/Personnel/PersonnelSubNav';
 import PersonnelFilters from '@/widgets/Personnel/PersonnelFilters';
 import PersonnelTable from '@/widgets/Personnel/PersonnelTable';
 
 const Trainers: React.FC = () => {
+  const [searchTerm, setSearchTerm] = useState('');
+  const [filters, setFilters] = useState({});
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const handleSearch = (term: string) => {
+    setSearchTerm(term);
+    // Here you would typically filter your data based on the search term
+    console.log('Searching for:', term);
+  };
+
+  const handleFilterChange = (newFilters: any) => {
+    setFilters(newFilters);
+    // Here you would typically filter your data based on the filters
+    console.log('Filters applied:', newFilters);
+  };
 
   const headers = [
     { key: 'rank', label: 'Rank', align: 'left' as const },
@@ -45,8 +60,8 @@ const Trainers: React.FC = () => {
   return (
     <>
       <PersonnelSubNav />
-      <PersonnelHeader title="Trainers" placeholder="Enter the name of a trainers" onSearch={() => {}} />
-      <PersonnelFilters />
+      <PersonnelHeader title="Trainers" placeholder="Enter the name of a trainers" onSearch={handleSearch} />
+      <PersonnelFilters onFilterChange={handleFilterChange} />
       <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/trainer" />
     </>
   );

@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Search } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
 
 interface PersonnelHeaderProps {
   title: string;
@@ -12,20 +13,42 @@ const PersonnelHeader: React.FC<PersonnelHeaderProps> = ({
   placeholder,
   onSearch,
 }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [searchTerm, setSearchTerm] = useState("");
 
+  // Initialize search term from URL params on component mount
+  useEffect(() => {
+    const urlSearchTerm = searchParams.get('search') || '';
+    setSearchTerm(urlSearchTerm);
+    if (urlSearchTerm && onSearch) {
+      onSearch(urlSearchTerm);
+    }
+  }, []);
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setSearchTerm(value);
+    setSearchTerm(e.target.value);
+  };
+
+  const handleSearchClick = () => {
+    // Update URL search params
+    const newSearchParams = new URLSearchParams(searchParams);
+    if (searchTerm.trim()) {
+      newSearchParams.set('search', searchTerm.trim());
+    } else {
+      newSearchParams.delete('search');
+    }
+    setSearchParams(newSearchParams);
+
+    // Call the onSearch callback
     if (onSearch) {
-      onSearch(value);
+      onSearch(searchTerm.trim());
     }
   };
 
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (onSearch) {
-      onSearch(searchTerm);
+  const handleKeyPress = (e: React.KeyboardEvent) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleSearchClick();
     }
   };
 
@@ -39,21 +62,27 @@ const PersonnelHeader: React.FC<PersonnelHeaderProps> = ({
           Here you will find the {title.toLowerCase()}' honours list.
         </p>
 
-        <form onSubmit={handleSearchSubmit} className="max-w-sm md:max-w-xl mx-auto relative group">
+        <div className="max-w-sm md:max-w-xl mx-auto relative group">
           <input
             type="text"
             placeholder={placeholder}
             value={searchTerm}
             onChange={handleSearchChange}
-            className="w-full bg-gray-50 border border-gray-100 rounded-full px-6 md:px-8 py-3 md:py-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all pl-12 md:pl-14 shadow-sm"
+            onKeyPress={handleKeyPress}
+            className="w-full bg-gray-50 border border-gray-100 rounded-full px-6 md:px-8 py-3 md:py-4 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:bg-white transition-all pr-12 md:pr-14 shadow-sm"
           />
-          <Search
-            size={16}
-            className="absolute left-4 md:left-6 top-1/2 -translate-y-1/2 text-gray-300 group-focus-within:text-blue-500 transition-colors md:w-[18px] md:h-[18px]"
-          />
-        </form>
+          <button
+            onClick={handleSearchClick}
+            className="absolute right-4 md:right-6 top-1/2 -translate-y-1/2 text-gray-300 hover:text-blue-500 transition-colors cursor-pointer"
+          >
+            <Search
+              size={16}
+              className="md:w-[18px] md:h-[18px]"
+            />
+          </button>
+        </div>
 
-        <p className="text-[9px] md:text-[10px] font-bold text-gray-300 tracking-widest mt-6 md:mt-8">
+        <p className="text-[15px] font-normal text-black tracking-[-0.03em] leading-[100%] text-center mt-6 md:mt-8" style={{ fontFamily: 'DM Sans' }}>
           Top {title.toLowerCase()}
         </p>
       </div>
