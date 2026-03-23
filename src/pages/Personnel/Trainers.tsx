@@ -44,8 +44,8 @@ const Trainers: React.FC = () => {
 
   return (
     <>
-      <PersonnelHeader title="Trainers" placeholder="Enter the name of a trainers" />
       <PersonnelSubNav />
+      <PersonnelHeader title="Trainers" placeholder="Enter the name of a trainers" onSearch={() => {}} />
       <PersonnelFilters />
       <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/trainer" />
     </>

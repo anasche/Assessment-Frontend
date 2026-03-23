@@ -46,8 +46,8 @@ const Jockeys: React.FC = () => {
 
   return (
     <>
-      <PersonnelHeader title="Jockeys" placeholder="Enter the name of a Jockeys" />
       <PersonnelSubNav />
+      <PersonnelHeader title="Jockeys" placeholder="Enter the name of a Jockeys" onSearch={() => {}} />
       <PersonnelFilters />
       <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/jockey" />
     </>

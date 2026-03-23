@@ -44,8 +44,8 @@ const Owners: React.FC = () => {
 
   return (
     <>
-      <PersonnelHeader title="Owners" placeholder="Enter owner name" />
       <PersonnelSubNav />
+      <PersonnelHeader title="Owners" placeholder="Enter owner name" onSearch={() => {}} />
       <PersonnelFilters />
       <PersonnelTable headers={headers} data={data} linkPrefix="/personnel/owner" />
     </>

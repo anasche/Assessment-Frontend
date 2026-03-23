@@ -9,6 +9,20 @@ interface PersonnelTableProps {
 }
 
 const PersonnelTable: React.FC<PersonnelTableProps> = ({ headers, data, linkPrefix }) => {
+  // Show empty state if no data
+  if (data.length === 0) {
+    return (
+      <section className="pb-20 md:pb-24 bg-white">
+        <div className="container mx-auto px-4 max-w-7xl">
+          <div className="text-center py-16">
+            <div className="text-gray-400 text-lg mb-2">No results found</div>
+            <div className="text-gray-500 text-sm">Try adjusting your filters to see more results</div>
+          </div>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="pb-20 md:pb-24 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
