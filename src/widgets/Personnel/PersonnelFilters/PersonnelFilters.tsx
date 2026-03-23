@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { ChevronDown, ArrowRight } from 'lucide-react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { ChevronDown, ArrowRight } from "lucide-react";
+import { useSearchParams } from "react-router-dom";
+import Button from "@/components/Button";
 
 interface PersonnelFiltersProps {
   onFilterChange?: (filters: FilterState) => void;
@@ -15,15 +16,17 @@ interface FilterState {
   class: string;
 }
 
-const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) => {
+const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({
+  onFilterChange,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [filters, setFilters] = useState<FilterState>({
-    year: 'All',
-    discipline: 'All',
-    breed: 'All',
-    age: 'All',
-    sex: 'All',
-    class: 'All'
+    year: "All",
+    discipline: "All",
+    breed: "All",
+    age: "All",
+    sex: "All",
+    class: "All",
   });
 
   const [dropdownOpen, setDropdownOpen] = useState<string | null>(null);
@@ -31,29 +34,31 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
   // Initialize filters from URL params on component mount
   useEffect(() => {
     const urlFilters: FilterState = {
-      year: searchParams.get('year') || 'All',
-      discipline: searchParams.get('discipline') || 'All',
-      breed: searchParams.get('breed') || 'All',
-      age: searchParams.get('age') || 'All',
-      sex: searchParams.get('sex') || 'All',
-      class: searchParams.get('class') || 'All'
+      year: searchParams.get("year") || "All",
+      discipline: searchParams.get("discipline") || "All",
+      breed: searchParams.get("breed") || "All",
+      age: searchParams.get("age") || "All",
+      sex: searchParams.get("sex") || "All",
+      class: searchParams.get("class") || "All",
     };
     setFilters(urlFilters);
-    
+
     // Call onFilterChange if any filters are set in URL
-    const hasActiveFilters = Object.values(urlFilters).some(value => value !== 'All');
+    const hasActiveFilters = Object.values(urlFilters).some(
+      (value) => value !== "All",
+    );
     if (hasActiveFilters && onFilterChange) {
       onFilterChange(urlFilters);
     }
   }, []);
 
   const filterOptions = {
-    year: ['All', '2025', '2024', '2023', '2022'],
-    discipline: ['All', 'Flat', 'Jump'],
-    breed: ['All', 'PUR SANG', 'ARABIAN'],
-    age: ['All', '3', '4', '5', '6+'],
-    sex: ['All', 'M', 'F', 'C', 'G', 'H'],
-    class: ['All', 'Class 1', 'Class 2', 'Class 3']
+    year: ["All", "2025", "2024", "2023", "2022"],
+    discipline: ["All", "Flat", "Jump"],
+    breed: ["All", "PUR SANG", "ARABIAN"],
+    age: ["All", "3", "4", "5", "6+"],
+    sex: ["All", "M", "F", "C", "G", "H"],
+    class: ["All", "Class 1", "Class 2", "Class 3"],
   };
 
   const handleFilterChange = (filterType: keyof FilterState, value: string) => {
@@ -66,16 +71,16 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
   const handleApplyFilters = () => {
     // Update URL search params
     const newSearchParams = new URLSearchParams(searchParams);
-    
+
     // Set filter params, remove if 'All'
     Object.entries(filters).forEach(([key, value]) => {
-      if (value === 'All') {
+      if (value === "All") {
         newSearchParams.delete(key);
       } else {
         newSearchParams.set(key, value);
       }
     });
-    
+
     setSearchParams(newSearchParams);
 
     // Call the callback
@@ -91,7 +96,7 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
   const renderFilterDropdown = (
     filterType: keyof FilterState,
     label: string,
-    options: string[]
+    options: string[],
   ) => (
     <div className="relative flex flex-col md:flex-row items-center gap-1 md:gap-2 w-full md:w-auto">
       <span className="text-[9px] md:text-xs font-bold text-[#0A0B14] tracking-wider text-center md:whitespace-nowrap">
@@ -103,9 +108,12 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
           className="flex items-center justify-between gap-1 md:gap-3 px-2 md:px-6 py-2 md:py-2.5 bg-gray-50 border border-gray-100 rounded-full text-[9px] md:text-xs font-bold text-gray-500 hover:text-gray-900 transition-all min-w-[70px] md:min-w-[80px] w-full md:w-auto"
         >
           <span className="truncate">{filters[filterType]}</span>
-          <ChevronDown size={10} className="md:w-[14px] md:h-[14px] flex-shrink-0" />
+          <ChevronDown
+            size={10}
+            className="md:w-[14px] md:h-[14px] flex-shrink-0"
+          />
         </button>
-        
+
         {dropdownOpen === filterType && (
           <div className="absolute top-full mt-2 left-0 right-0 md:left-0 md:right-auto bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-[120px]">
             {options.map((option) => (
@@ -113,7 +121,9 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
                 key={option}
                 onClick={() => handleFilterChange(filterType, option)}
                 className={`w-full px-4 py-2 text-left text-xs hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg ${
-                  filters[filterType] === option ? 'bg-blue-50 text-blue-600 font-bold' : 'text-gray-700'
+                  filters[filterType] === option
+                    ? "bg-blue-50 text-blue-600 font-bold"
+                    : "text-gray-700"
                 }`}
               >
                 {option}
@@ -132,42 +142,61 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
         <div className="md:hidden space-y-4">
           {/* First Row - Year, Discipline, Breed */}
           <div className="grid grid-cols-3 gap-2">
-            {renderFilterDropdown('year', 'Year', filterOptions.year)}
-            {renderFilterDropdown('discipline', 'Discipline', filterOptions.discipline)}
-            {renderFilterDropdown('breed', 'Breed', filterOptions.breed)}
+            {renderFilterDropdown("year", "Year", filterOptions.year)}
+            {renderFilterDropdown(
+              "discipline",
+              "Discipline",
+              filterOptions.discipline,
+            )}
+            {renderFilterDropdown("breed", "Breed", filterOptions.breed)}
           </div>
-          
+
           {/* Second Row - Age, Sex, Class */}
           <div className="grid grid-cols-3 gap-2">
-            {renderFilterDropdown('age', 'Age', filterOptions.age)}
-            {renderFilterDropdown('sex', 'Sex', filterOptions.sex)}
-            {renderFilterDropdown('class', 'Class', filterOptions.class)}
+            {renderFilterDropdown("age", "Age", filterOptions.age)}
+            {renderFilterDropdown("sex", "Sex", filterOptions.sex)}
+            {renderFilterDropdown("class", "Class", filterOptions.class)}
           </div>
-          
+
           {/* Filter Button */}
-          <button 
+          <Button
             onClick={handleApplyFilters}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-bold tracking-widest flex items-center justify-center gap-3 shadow-lg shadow-blue-600/20 transition-all"
+            variant="primary"
+            size="md"
+            fullWidth={true}
+            className="!h-12 !text-xs !font-bold !tracking-widest shadow-lg shadow-blue-600/20"
           >
-            FILTER <div className="bg-white/20 p-1 rounded-full"><ArrowRight size={12} /></div>
-          </button>
+            FILTER{" "}
+            <div className="bg-white/20 p-1 rounded-full">
+              <ArrowRight size={12} />
+            </div>
+          </Button>
         </div>
 
         {/* Desktop Layout */}
         <div className="hidden md:flex md:flex-wrap items-center justify-center gap-4">
-          {renderFilterDropdown('year', 'Year', filterOptions.year)}
-          {renderFilterDropdown('discipline', 'Discipline', filterOptions.discipline)}
-          {renderFilterDropdown('breed', 'Breed', filterOptions.breed)}
-          {renderFilterDropdown('age', 'Age', filterOptions.age)}
-          {renderFilterDropdown('sex', 'Sex', filterOptions.sex)}
-          {renderFilterDropdown('class', 'Class', filterOptions.class)}
+          {renderFilterDropdown("year", "Year", filterOptions.year)}
+          {renderFilterDropdown(
+            "discipline",
+            "Discipline",
+            filterOptions.discipline,
+          )}
+          {renderFilterDropdown("breed", "Breed", filterOptions.breed)}
+          {renderFilterDropdown("age", "Age", filterOptions.age)}
+          {renderFilterDropdown("sex", "Sex", filterOptions.sex)}
+          {renderFilterDropdown("class", "Class", filterOptions.class)}
 
-          <button 
+          <Button
             onClick={handleApplyFilters}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2.5 rounded-full text-xs font-bold tracking-widest flex items-center gap-3 shadow-lg shadow-blue-600/20 transition-all ml-4"
+            variant="primary"
+            size="md"
+            className="!h-10 !px-8 !text-xs !font-bold !tracking-widest shadow-lg shadow-blue-600/20 ml-4"
           >
-            FILTER <div className="bg-white/20 p-1 rounded-full"><ArrowRight size={10} className="w-3 h-3" /></div>
-          </button>
+            FILTER{" "}
+            <div className="bg-white/20 p-1 rounded-full">
+              <ArrowRight size={10} className="w-3 h-3" />
+            </div>
+          </Button>
         </div>
       </div>
     </section>

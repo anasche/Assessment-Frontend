@@ -10,7 +10,7 @@ const PersonnelSubNav: React.FC = () => {
   ];
 
   return (
-    <section className="pt-24 md:pt-32 bg-white">
+    <section className="pt-24 md:pt-24 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
         <div className="flex justify-center">
           <div className="inline-flex w-full max-w-md md:max-w-none md:w-auto" style={{ backgroundColor: '#151585' }}>
