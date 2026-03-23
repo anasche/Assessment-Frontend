@@ -23,7 +23,7 @@ const TicketCard: React.FC<TicketCardProps> = ({
       alt={title}
       className="absolute inset-0 w-full h-full object-cover transition-transform duration-[5s] group-hover:scale-110"
     />
-    <div className="absolute inset-0 bg-black/50 flex flex-col items-center justify-center p-6 md:p-8 text-center ring-1 ring-white/10">
+    <div className="absolute inset-0 flex flex-col items-center justify-center p-6 md:p-8 text-center ring-1 ring-white/10" style={{backgroundColor: '#000000C7'}}>
       <h3 className="font-syne font-bold text-xl md:text-3xl lg:text-[34px] text-white mb-6 md:mb-8 leading-[1.1] tracking-tightest max-w-[320px] whitespace-pre-line">
         {title}
       </h3>
