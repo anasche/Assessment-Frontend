@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Title from "@/components/Title/Title";
+import Title from "@/components/Title";
 import Event1 from "@/assets/images/events/event-1.png";
 import Event2 from "@/assets/images/events/event-2.jpg";
 import Event3 from "@/assets/images/events/event-3.jpg";

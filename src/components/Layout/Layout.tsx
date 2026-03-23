@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar/Navbar';
-import Footer from '@/components/Footer/Footer';
-import ContactPopup from '@/components/ContactPopup/ContactPopup';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
+import ContactPopup from '@/components/ContactPopup';
 
 interface LayoutProps {
   children: React.ReactNode;

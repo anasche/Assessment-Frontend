@@ -14,7 +14,6 @@ import "swiper/css/thumbs";
 interface GalleryLightboxProps {
   isOpen: boolean;
   onClose: () => void;
-  images: { id: number; src: string }[];
 }
 
 const GalleryLightbox: React.FC<GalleryLightboxProps> = ({

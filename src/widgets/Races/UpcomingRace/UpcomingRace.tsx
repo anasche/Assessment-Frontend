@@ -66,7 +66,7 @@ const UpcomingRace: React.FC = () => {
                     <img
                       src={EventCountryIconDefault}
                       alt="Country Icon"
-                      className="w-8 h-8 md:w-10 md:h-10 lg:w-[45px] lg:h-[45px] object-contain"
+                      className="w-[30px] h-[30px] object-contain"
                     />
                   </div>
                   <div className="flex flex-col gap-0.5 md:gap-1 text-left min-w-0">
@@ -83,8 +83,8 @@ const UpcomingRace: React.FC = () => {
                 <div className="flex items-center gap-3 md:gap-4 lg:gap-5 min-w-0">
                   <div className="flex-shrink-0 rounded-[15px] overflow-hidden">
                     <EventDateIcon
-                      size={45}
-                      className="text-white/80 w-8 h-8 md:w-10 md:h-10 lg:w-[45px] lg:h-[45px]"
+                      size={30}
+                      className="text-white/80 w-[30px] h-[30px]"
                     />
                   </div>
                   <div className="flex flex-col gap-0.5 md:gap-1 text-left min-w-0">

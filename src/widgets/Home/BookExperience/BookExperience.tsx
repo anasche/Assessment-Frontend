@@ -1,7 +1,7 @@
 import ExploreLink from "@/components/ExploreLink";
-import Badge from "@/components/Badge/Badge";
+import Badge from "@/components/Badge";
 import EventBackground from "@/assets/images/experience/experience-1.jpg";
-import Title from "@/components/Title/Title";
+import Title from "@/components/Title";
 
 const BookExperience: React.FC = () => {
   return (

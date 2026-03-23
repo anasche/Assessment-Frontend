@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from '@/widgets/Home/Hero/Hero';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading';
 
 // Lazy load widgets that are below the fold
 const LiveEvent = lazy(() => import('@/widgets/Home/LiveEvent/LiveEvent'));

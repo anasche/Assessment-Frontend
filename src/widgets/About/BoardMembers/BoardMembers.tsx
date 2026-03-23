@@ -1,4 +1,4 @@
-import Title from "@/components/Title/Title";
+import Title from "@/components/Title";
 import React from "react";
 import About2 from "@/assets/images/about/about-2.png";
 

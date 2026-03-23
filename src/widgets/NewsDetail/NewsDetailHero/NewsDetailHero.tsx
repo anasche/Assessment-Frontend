@@ -1,7 +1,7 @@
 import React from "react";
 import News1 from "@/assets/images/news-detail/news-detail1.jpg";
-import Badge from "@/components/Badge/Badge";
-import Title from "@/components/Title/Title";
+import Badge from "@/components/Badge";
+import Title from "@/components/Title";
 
 const NewsDetailHero: React.FC = () => {
   return (

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Calendar, ChevronDown } from 'lucide-react';
-import EventCard from '@/components/EventCard/EventCard';
+import EventCard from '@/components/EventCard';
 
 const RaceGrid: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState(2025);

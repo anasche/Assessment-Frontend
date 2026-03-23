@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import AboutHero from '@/widgets/About/AboutHero/AboutHero';
-import Loading from '@/components/Loading/Loading';
+import Loading from '@/components/Loading';
 
 const BoardMembers = lazy(() => import('@/widgets/About/BoardMembers/BoardMembers'));
 
