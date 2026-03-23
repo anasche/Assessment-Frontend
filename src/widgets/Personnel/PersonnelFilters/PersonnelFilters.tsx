@@ -57,20 +57,21 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
     label: string,
     options: string[]
   ) => (
-    <div className="relative flex items-center gap-2 md:gap-4 w-full md:w-auto justify-center">
-      <span className="text-[10px] md:text-xs font-bold text-[#0A0B14] uppercase tracking-wider">
+    <div className="relative flex flex-col items-center gap-1 md:gap-2 w-full md:w-auto">
+      <span className="text-[9px] md:text-xs font-bold text-[#0A0B14] uppercase tracking-wider text-center">
         {label}
       </span>
-      <div className="relative">
+      <div className="relative w-full md:w-auto">
         <button
           onClick={() => toggleDropdown(filterType)}
-          className="flex items-center gap-2 md:gap-3 px-4 md:px-6 py-2 md:py-2.5 bg-gray-50 border border-gray-100 rounded-full text-[10px] md:text-xs font-bold text-gray-500 hover:text-gray-900 transition-all min-w-[80px] justify-between"
+          className="flex items-center justify-between gap-1 md:gap-3 px-2 md:px-6 py-2 md:py-2.5 bg-gray-50 border border-gray-100 rounded-full text-[9px] md:text-xs font-bold text-gray-500 hover:text-gray-900 transition-all min-w-[70px] md:min-w-[80px] w-full md:w-auto"
         >
-          {filters[filterType]} <ChevronDown size={12} className="md:w-[14px] md:h-[14px]" />
+          <span className="truncate">{filters[filterType]}</span>
+          <ChevronDown size={10} className="md:w-[14px] md:h-[14px] flex-shrink-0" />
         </button>
         
         {dropdownOpen === filterType && (
-          <div className="absolute top-full mt-2 left-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-[120px]">
+          <div className="absolute top-full mt-2 left-0 right-0 md:left-0 md:right-auto bg-white border border-gray-200 rounded-lg shadow-lg z-50 min-w-[120px]">
             {options.map((option) => (
               <button
                 key={option}
@@ -91,7 +92,33 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
   return (
     <section className="pb-8 md:pb-12 bg-white">
       <div className="container mx-auto px-4 max-w-7xl">
-        <div className="flex flex-col md:flex-row md:flex-wrap items-center justify-center gap-3 md:gap-4">
+        {/* Mobile Layout */}
+        <div className="md:hidden space-y-4">
+          {/* First Row - Year, Discipline, Breed */}
+          <div className="grid grid-cols-3 gap-2">
+            {renderFilterDropdown('year', 'Year', filterOptions.year)}
+            {renderFilterDropdown('discipline', 'Discipline', filterOptions.discipline)}
+            {renderFilterDropdown('breed', 'Breed', filterOptions.breed)}
+          </div>
+          
+          {/* Second Row - Age, Sex, Class */}
+          <div className="grid grid-cols-3 gap-2">
+            {renderFilterDropdown('age', 'Age', filterOptions.age)}
+            {renderFilterDropdown('sex', 'Sex', filterOptions.sex)}
+            {renderFilterDropdown('class', 'Class', filterOptions.class)}
+          </div>
+          
+          {/* Filter Button */}
+          <button 
+            onClick={handleApplyFilters}
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-full text-xs font-bold tracking-widest flex items-center justify-center gap-3 shadow-lg shadow-blue-600/20 transition-all"
+          >
+            FILTER <div className="bg-white/20 p-1 rounded-full"><ArrowRight size={12} /></div>
+          </button>
+        </div>
+
+        {/* Desktop Layout */}
+        <div className="hidden md:flex md:flex-wrap items-center justify-center gap-4">
           {renderFilterDropdown('year', 'Year', filterOptions.year)}
           {renderFilterDropdown('discipline', 'Discipline', filterOptions.discipline)}
           {renderFilterDropdown('breed', 'Breed', filterOptions.breed)}
@@ -101,9 +128,9 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
 
           <button 
             onClick={handleApplyFilters}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-6 md:px-8 py-2 md:py-2.5 rounded-full text-[10px] md:text-xs font-bold tracking-widest flex items-center gap-2 md:gap-3 shadow-lg shadow-blue-600/20 transition-all md:ml-4 w-full md:w-auto justify-center"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-2.5 rounded-full text-xs font-bold tracking-widest flex items-center gap-3 shadow-lg shadow-blue-600/20 transition-all ml-4"
           >
-            FILTER <div className="bg-white/20 p-1 rounded-full"><ArrowRight size={10} className="md:w-3 md:h-3" /></div>
+            FILTER <div className="bg-white/20 p-1 rounded-full"><ArrowRight size={10} className="w-3 h-3" /></div>
           </button>
         </div>
       </div>

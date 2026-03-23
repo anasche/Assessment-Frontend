@@ -6,8 +6,7 @@ import Title from "@/components/Title";
 const NewsDetailHero: React.FC = () => {
   return (
     <section
-      className="relative h-[80vh] min-h-[600px] w-full overflow-hidden"
-      style={{ marginTop: "93px" }}
+      className="relative h-[80vh] min-h-[600px] w-full overflow-hidden pt-20 md:pt-24"
     >
       {/* Background Image */}
       <div className="absolute inset-0">
