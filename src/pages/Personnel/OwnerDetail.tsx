@@ -58,7 +58,7 @@ const OwnerDetail: React.FC = () => {
                    </div>
                    <div>
                       <div className="text-2xl font-bold text-gray-900">143</div>
-                      <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">runners</div>
+                      <div className="text-[10px] tracking-widest text-gray-400 font-bold">runners</div>
                    </div>
                 </div>
                 <div className="flex items-center gap-4">
@@ -67,7 +67,7 @@ const OwnerDetail: React.FC = () => {
                    </div>
                    <div>
                       <div className="text-2xl font-bold text-gray-900">4</div>
-                      <div className="text-[10px] uppercase tracking-widest text-gray-400 font-bold">victories</div>
+                      <div className="text-[10px] tracking-widest text-gray-400 font-bold">victories</div>
                    </div>
                 </div>
               </div>

@@ -92,7 +92,7 @@ const LiveEvent: React.FC = () => {
               {/* LIVE NOW badge */}
               {!playing && (
                 <div className="absolute top-5 left-5 z-30 flex items-center gap-2">
-                  <span className="text-[11px] font-bold text-white tracking-widest uppercase">
+                  <span className="text-[11px] font-bold text-white tracking-widest">
                     LIVE NOW
                   </span>
                   <span className="w-2.5 h-2.5 bg-red-600 rounded-full animate-pulse" />
@@ -115,7 +115,7 @@ const LiveEvent: React.FC = () => {
                       <circle cx="12" cy="12" r="10" />
                       <polyline points="12 6 12 12 16 14" />
                     </svg>
-                    <span className="text-[9px] font-semibold uppercase tracking-wider">
+                    <span className="text-[9px] font-semibold tracking-wider">
                       Watch later
                     </span>
                   </button>
@@ -135,7 +135,7 @@ const LiveEvent: React.FC = () => {
                       <line x1="8.59" y1="13.51" x2="15.42" y2="17.49" />
                       <line x1="15.41" y1="6.51" x2="8.59" y2="10.49" />
                     </svg>
-                    <span className="text-[9px] font-semibold uppercase tracking-wider">
+                    <span className="text-[9px] font-semibold tracking-wider">
                       Share
                     </span>
                   </button>

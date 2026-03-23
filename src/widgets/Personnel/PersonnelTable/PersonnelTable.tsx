@@ -34,7 +34,7 @@ const PersonnelTable: React.FC<PersonnelTableProps> = ({ headers, data, linkPref
                 {headers.map((header, idx) => (
                    <th 
                     key={idx} 
-                    className={`px-4 py-3 text-[10px] font-bold uppercase tracking-wider whitespace-nowrap ${
+                    className={`px-4 py-3 text-[10px] font-bold tracking-wider whitespace-nowrap ${
                       header.align === 'center' ? 'text-center' : header.align === 'right' ? 'text-right' : 'text-left'
                     }`}
                   >
@@ -89,7 +89,7 @@ const PersonnelTable: React.FC<PersonnelTableProps> = ({ headers, data, linkPref
                   <span className="text-gray-400 font-bold text-sm">#{row.rank}</span>
                   <Link 
                     to={`${linkPrefix}/${row.id || '1'}`}
-                    className="text-gray-900 font-bold text-sm underline decoration-gray-300 hover:decoration-blue-600 transition-all uppercase tracking-wider"
+                    className="text-gray-900 font-bold text-sm underline decoration-gray-300 hover:decoration-blue-600 transition-all tracking-wider"
                   >
                     {row.horse || row.name}
                   </Link>
@@ -107,37 +107,37 @@ const PersonnelTable: React.FC<PersonnelTableProps> = ({ headers, data, linkPref
                 <div className="grid grid-cols-2 gap-4">
                   {row.age && (
                     <div className="text-center">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Age</div>
+                      <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Age</div>
                       <div className="text-gray-900 font-bold text-xs">{row.age}</div>
                     </div>
                   )}
                   {row.sex && (
                     <div className="text-center">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Sex</div>
+                      <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Sex</div>
                       <div className="text-gray-900 font-bold text-xs">{row.sex}</div>
                     </div>
                   )}
                   {row.breed && (
                     <div className="text-center">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Breed</div>
+                      <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Breed</div>
                       <div className="text-gray-900 font-bold text-xs">{row.breed}</div>
                     </div>
                   )}
                   {row.horses && (
                     <div className="text-center">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Horses</div>
+                      <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Horses</div>
                       <div className="text-gray-900 font-bold text-xs">{row.horses}</div>
                     </div>
                   )}
                   {row.runners && (
                     <div className="text-center">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Runners</div>
+                      <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Runners</div>
                       <div className="text-gray-900 font-bold text-xs">{row.runners}</div>
                     </div>
                   )}
                   {row.races && (
                     <div className="text-center">
-                      <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Races</div>
+                      <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Races</div>
                       <div className="text-gray-900 font-bold text-xs">{row.races}</div>
                     </div>
                   )}
@@ -148,13 +148,13 @@ const PersonnelTable: React.FC<PersonnelTableProps> = ({ headers, data, linkPref
                   <div className="grid grid-cols-2 gap-4 pt-4 border-t border-gray-200">
                     {row.wins && (
                       <div className="text-center">
-                        <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Wins</div>
+                        <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Wins</div>
                         <div className="text-gray-900 font-bold text-xs">{row.wins}</div>
                       </div>
                     )}
                     {row.places && (
                       <div className="text-center">
-                        <div className="text-[10px] font-bold text-gray-500 uppercase tracking-wider mb-1">Places</div>
+                        <div className="text-[10px] font-bold text-gray-500 tracking-wider mb-1">Places</div>
                         <div className="text-gray-900 font-bold text-xs">{row.places}</div>
                       </div>
                     )}
@@ -166,49 +166,49 @@ const PersonnelTable: React.FC<PersonnelTableProps> = ({ headers, data, linkPref
                   <div className="space-y-3 pt-4 border-t border-gray-200">
                     {row.earnings && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Earnings</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Earnings</span>
                         <span className="text-gray-900 font-bold text-xs">{row.earnings}</span>
                       </div>
                     )}
                     {row.owners_premiums && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Premiums</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Premiums</span>
                         <span className="text-gray-900 font-bold text-xs">{row.owners_premiums}</span>
                       </div>
                     )}
                     {row.earnings_and_premiums && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Total</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Total</span>
                         <span className="text-gray-900 font-bold text-xs">{row.earnings_and_premiums}</span>
                       </div>
                     )}
                     {row.breeders_premiums && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Breeders</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Breeders</span>
                         <span className="text-gray-900 font-bold text-xs">{row.breeders_premiums}</span>
                       </div>
                     )}
                     {row.earning_per_race && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Per Race</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Per Race</span>
                         <span className="text-gray-900 font-bold text-xs">{row.earning_per_race}</span>
                       </div>
                     )}
                     {row.earnings_per_runner && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Per Runner</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Per Runner</span>
                         <span className="text-gray-900 font-bold text-xs">{row.earnings_per_runner}</span>
                       </div>
                     )}
                     {row.earnings_per_horse && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Per Horse</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Per Horse</span>
                         <span className="text-gray-900 font-bold text-xs">{row.earnings_per_horse}</span>
                       </div>
                     )}
                     {row.runs_per_horse && (
                       <div className="flex justify-between items-center">
-                        <span className="text-[10px] font-bold text-gray-500 uppercase tracking-wider">Runs/Horse</span>
+                        <span className="text-[10px] font-bold text-gray-500 tracking-wider">Runs/Horse</span>
                         <span className="text-gray-900 font-bold text-xs">{row.runs_per_horse}</span>
                       </div>
                     )}

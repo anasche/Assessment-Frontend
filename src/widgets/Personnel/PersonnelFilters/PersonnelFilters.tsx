@@ -94,7 +94,7 @@ const PersonnelFilters: React.FC<PersonnelFiltersProps> = ({ onFilterChange }) =
     options: string[]
   ) => (
     <div className="relative flex flex-col md:flex-row items-center gap-1 md:gap-2 w-full md:w-auto">
-      <span className="text-[9px] md:text-xs font-bold text-[#0A0B14] uppercase tracking-wider text-center md:whitespace-nowrap">
+      <span className="text-[9px] md:text-xs font-bold text-[#0A0B14] tracking-wider text-center md:whitespace-nowrap">
         {label}
       </span>
       <div className="relative w-full md:w-auto">

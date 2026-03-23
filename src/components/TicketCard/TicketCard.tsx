@@ -51,7 +51,7 @@ const TicketCard: React.FC<TicketCardProps> = ({
         </div>
       </div>
 
-      <ExploreLink to="#">BOOK EXPERIENCE</ExploreLink>
+      <ExploreLink to="#">Book Experience</ExploreLink>
     </div>
   </div>
 );

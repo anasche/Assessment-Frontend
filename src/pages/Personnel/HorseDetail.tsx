@@ -54,14 +54,14 @@ const HorseDetail: React.FC = () => {
               </div>
               <div className="text-center mb-10">
                  <h1 className="text-2xl font-bold text-[#0A0B14] mb-1">BURAAK (MORCOO)</h1>
-                 <p className="text-[10px] font-bold text-gray-300 tracking-[0.2em] uppercase">BAY COLT • 4Y • MAR</p>
+                 <p className="text-[10px] font-bold text-gray-300 tracking-[0.2em]">BAY COLT • 4Y • MAR</p>
               </div>
 
               <div className="space-y-6">
                  <h3 className="text-blue-600 font-bold text-sm border-l-2 border-blue-600 pl-4">Statistics</h3>
                  {horseStats.map((stat, idx) => (
                    <div key={idx} className="flex justify-between items-center py-4 border-b border-gray-50 last:border-0">
-                      <span className="text-[10px] font-bold text-gray-300 tracking-wider uppercase">{stat.label}</span>
+                      <span className="text-[10px] font-bold text-gray-300 tracking-wider">{stat.label}</span>
                       <span className="text-sm font-bold text-gray-900">{stat.value}</span>
                    </div>
                  ))}
@@ -74,31 +74,31 @@ const HorseDetail: React.FC = () => {
              <div className="bg-[#0A1045] rounded-[40px] p-10 text-white mb-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                    <div>
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">OWNER</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">OWNER</div>
                       <div className="font-bold text-sm tracking-tight">DAISSAOUI MOHAMED</div>
                    </div>
                    <div>
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">TRAINER</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">TRAINER</div>
                       <div className="font-bold text-sm tracking-tight">DAISSAOUI MOHAMED</div>
                    </div>
                    <div>
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">BREEDER</div>
-                      <div className="font-bold text-sm tracking-tight uppercase">Haras National de Marrakech</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">BREEDER</div>
+                      <div className="font-bold text-sm tracking-tight">Haras National de Marrakech</div>
                    </div>
                    <div className="pt-8 border-t border-white/10">
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">SEX</div>
-                      <div className="font-bold text-sm tracking-tight uppercase tracking-widest">COLT</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">SEX</div>
+                      <div className="font-bold text-sm tracking-tight tracking-widest">COLT</div>
                    </div>
                    <div className="pt-8 border-t border-white/10">
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">AGE</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">AGE</div>
                       <div className="font-bold text-sm tracking-tight">4</div>
                    </div>
                    <div className="pt-8 border-t border-white/10">
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">COLOR</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">COLOR</div>
                       <div className="font-bold text-sm tracking-tight">Bay</div>
                    </div>
                    <div className="pt-8 border-t border-white/10">
-                      <div className="text-[10px] font-bold text-white/30 tracking-widest uppercase mb-2">HORSE RATING</div>
+                      <div className="text-[10px] font-bold text-white/30 tracking-widest mb-2">HORSE RATING</div>
                       <div className="font-bold text-sm tracking-tight">88</div>
                    </div>
                 </div>
@@ -110,39 +110,39 @@ const HorseDetail: React.FC = () => {
                    {/* Column 1 */}
                    <div className="flex flex-col justify-center gap-24">
                       <div className="relative p-6 bg-white border border-gray-100 rounded-xl shadow-sm">
-                         <div className="text-[9px] font-bold text-gray-300 uppercase tracking-widest mb-1">Bolt D'oro (Morocco)</div>
+                         <div className="text-[9px] font-bold text-gray-300 tracking-widest mb-1">Bolt D'oro (Morocco)</div>
                       </div>
                       <div className="relative p-6 bg-white border border-gray-100 rounded-xl shadow-sm">
-                         <div className="text-[9px] font-bold text-gray-300 uppercase tracking-widest mb-1">Take Charge Girl (Morocco)</div>
+                         <div className="text-[9px] font-bold text-gray-300 tracking-widest mb-1">Take Charge Girl (Morocco)</div>
                       </div>
                    </div>
                    
                    {/* Column 2 */}
                    <div className="flex flex-col justify-between gap-12 pl-12 border-l border-gray-100">
                       <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
-                         <div className="text-[8px] font-bold text-gray-300 uppercase tracking-widest mb-1">1999 MEDAGLIA D'ORO (Morocco)</div>
+                         <div className="text-[8px] font-bold text-gray-300 tracking-widest mb-1">1999 MEDAGLIA D'ORO (Morocco)</div>
                       </div>
                       <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
-                         <div className="text-[8px] font-bold text-gray-300 uppercase tracking-widest mb-1">2008 Globe Trot (Morocco) (Morocco)</div>
+                         <div className="text-[8px] font-bold text-gray-300 tracking-widest mb-1">2008 Globe Trot (Morocco) (Morocco)</div>
                       </div>
                       <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
-                         <div className="text-[8px] font-bold text-gray-300 uppercase tracking-widest mb-1">2010 Will Take Charge (Morocco) (Morocco)</div>
+                         <div className="text-[8px] font-bold text-gray-300 tracking-widest mb-1">2010 Will Take Charge (Morocco) (Morocco)</div>
                       </div>
                       <div className="p-4 bg-white border border-gray-100 rounded-xl shadow-sm">
-                         <div className="text-[8px] font-bold text-gray-300 uppercase tracking-widest mb-1">2009 Kaby Jo (Morocco)</div>
+                         <div className="text-[8px] font-bold text-gray-300 tracking-widest mb-1">2009 Kaby Jo (Morocco)</div>
                       </div>
                    </div>
 
                    {/* Column 3 */}
                    <div className="flex flex-col justify-between gap-4 pl-12 border-l border-gray-100">
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">1989 El Prado (IRE)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">1989 Cappucino Bay (Morocco) (Morocco)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">1989 A.P. Indy (Morocco) (Morocco)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">1997 Trip (Morocco) (Morocco)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">1993 Unbridled's Song (Morocco) (Morocco)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">1999 Take Charge Lady (Morocco) (Morocco)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">2001 Limehouse (Morocco) (Morocco)</div>
-                      <div className="text-[7px] font-bold text-gray-400 uppercase">2003 Time of Peace (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">1989 El Prado (IRE)</div>
+                      <div className="text-[7px] font-bold text-gray-400">1989 Cappucino Bay (Morocco) (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">1989 A.P. Indy (Morocco) (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">1997 Trip (Morocco) (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">1993 Unbridled's Song (Morocco) (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">1999 Take Charge Lady (Morocco) (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">2001 Limehouse (Morocco) (Morocco)</div>
+                      <div className="text-[7px] font-bold text-gray-400">2003 Time of Peace (Morocco)</div>
                    </div>
                 </div>
              </div>
@@ -159,31 +159,31 @@ const HorseDetail: React.FC = () => {
       <div className="container mx-auto px-4 max-w-7xl">
          <div className="flex flex-wrap items-center justify-center gap-4 mb-20 bg-gray-50/50 p-6 rounded-[32px] border border-gray-100">
             <div className="flex items-center gap-4">
-              <span className="text-[10px] font-bold text-[#0A0B14] uppercase tracking-wider">Year</span>
+              <span className="text-[10px] font-bold text-[#0A0B14] tracking-wider">Year</span>
               <button className="flex items-center gap-3 px-6 py-2 bg-white border border-gray-100 rounded-full text-xs font-bold text-gray-500">
                 2025 <ChevronDown size={14} />
               </button>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-[10px] font-bold text-[#0A0B14] uppercase tracking-wider">Discipline</span>
+              <span className="text-[10px] font-bold text-[#0A0B14] tracking-wider">Discipline</span>
               <button className="flex items-center gap-3 px-6 py-2 bg-white border border-gray-100 rounded-full text-xs font-bold text-gray-500">
                 Flat <ChevronDown size={14} />
               </button>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-[10px] font-bold text-[#0A0B14] uppercase tracking-wider">Breed</span>
+              <span className="text-[10px] font-bold text-[#0A0B14] tracking-wider">Breed</span>
               <button className="flex items-center gap-3 px-6 py-2 bg-white border border-gray-100 rounded-full text-xs font-bold text-gray-500">
                 PUR SANG <ChevronDown size={14} />
               </button>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-[10px] font-bold text-[#0A0B14] uppercase tracking-wider">Age</span>
+              <span className="text-[10px] font-bold text-[#0A0B14] tracking-wider">Age</span>
               <button className="flex items-center gap-3 px-6 py-2 bg-white border border-gray-100 rounded-full text-xs font-bold text-gray-500">
                 All <ChevronDown size={14} />
               </button>
             </div>
             <div className="flex items-center gap-4">
-              <span className="text-[10px] font-bold text-[#0A0B14] uppercase tracking-wider">Sex</span>
+              <span className="text-[10px] font-bold text-[#0A0B14] tracking-wider">Sex</span>
               <button className="flex items-center gap-3 px-6 py-2 bg-white border border-gray-100 rounded-full text-xs font-bold text-gray-500">
                 All <ChevronDown size={14} />
               </button>
