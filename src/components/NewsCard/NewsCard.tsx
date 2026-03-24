@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { IoArrowForwardOutline } from "react-icons/io5";
 
 interface NewsCardProps {
+  id: string;
   image: string;
   tag?: string;
   title: string;
@@ -11,17 +12,13 @@ interface NewsCardProps {
 }
 
 const NewsCard: React.FC<NewsCardProps> = ({
+  id,
   image,
   tag,
   title,
   date,
   description,
 }) => {
-  const slug = title
-    .toLowerCase()
-    .replace(/[^\w\s-]/g, "")
-    .replace(/\s+/g, "-");
-
   return (
     <div className="group bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full">
       <div className="relative aspect-[16/11] overflow-hidden">
@@ -42,7 +39,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
 
         <div className="mt-auto flex justify-end">
           <Link
-            to={`/news/${slug}`}
+            to={`/news/${id}`}
             className="group/btn relative inline-flex items-center justify-start bg-gradient-to-r from-[#3c3cb6] to-[#141473] rounded-[100px] py-[10px] pr-[10px] pl-5 transition-all duration-300 ease-in-out active:rounded-[12px]"
           >
             <span className="text-white block text-xs md:text-sm font-medium transform transition-all duration-300 ease-in-out group-hover/btn:translate-x-[20%]">

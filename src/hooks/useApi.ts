@@ -153,6 +153,14 @@ const apiService = {
     return result.data?.data || [];
   },
 
+  getNewsById: async (id: string): Promise<NewsItem> => {
+    const response = await fetch(`${BASE_URL}/news/${id}`);
+    if (!response.ok) throw new Error('Failed to fetch news item');
+    const result = await response.json();
+    // Based on the API test, check if it returns { message, data: NewsItem } or just NewsItem
+    return result.data || result;
+  },
+
   getPastEventsWithWinners: async (): Promise<PastEventsResponse> => {
     const response = await fetch(`${BASE_URL}/events/past-events-with-winners`);
     if (!response.ok) throw new Error('Failed to fetch past events');
@@ -195,6 +203,15 @@ export const useNews = (page = 1, limit = 200) => {
     queryFn: () => apiService.getNews(page, limit),
     staleTime: 5 * 60 * 1000, // 5 minutes
     gcTime: 10 * 60 * 1000, // 10 minutes
+  });
+};
+
+export const useNewsById = (id: string) => {
+  return useQuery({
+    queryKey: ['news', id],
+    queryFn: () => apiService.getNewsById(id),
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    enabled: !!id, // Only run if id is provided
   });
 };
 

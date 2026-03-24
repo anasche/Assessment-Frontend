@@ -53,7 +53,8 @@ const NewsGrid: React.FC = () => {
 
             return newsData.map((item: NewsItem, index: number) => (
               <NewsCard 
-                key={item._id || index} 
+                key={item._id || index}
+                id={item._id}
                 image={item.image}
                 date={formatDate(item.date)}
                 tag={getTag(item)}

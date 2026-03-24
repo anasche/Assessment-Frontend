@@ -1,10 +1,12 @@
 import React from "react";
-import NewsDetail1 from "@/assets/images/news-detail/news-detail1.jpg";
-import NewsDetail2 from "@/assets/images/news-detail/news-detail2.jpg";
-import NewsDetail3 from "@/assets/images/news-detail/news-detail3.jpg";
-import NewsDetail4 from "@/assets/images/news-detail/news-detail4.jpg";
+import { NewsItem } from "@/hooks/useApi";
+import { formatDate } from "@/utils/dateHelpers";
 
-const NewsDetailContent: React.FC = () => {
+interface NewsDetailContentProps {
+  newsItem: NewsItem;
+}
+
+const NewsDetailContent: React.FC<NewsDetailContentProps> = ({ newsItem }) => {
   return (
     <section className="bg-white py-16 md:py-24 px-4">
       <div className="container mx-auto max-w-[1200px]">
@@ -12,124 +14,67 @@ const NewsDetailContent: React.FC = () => {
           {/* Date Badge */}
           <div className="flex justify-end">
             <span className="bg-gray-100 text-gray-600 text-[10px] font-medium tracking-widest px-4 py-2 rounded-full">
-              March 15, 2024 - 10:49 AM
+              {formatDate(newsItem.date)} - {new Date(newsItem.date).toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: true 
+              })}
             </span>
           </div>
 
           {/* Main Content */}
           <div className="space-y-8">
             <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-gray-900 leading-tight font-syne">
-              Congratulations to the champions of the Moroccan leg of the UAE
-              President Cup Series
+              {newsItem.title}
             </h2>
 
             <div className="flex items-center gap-4 pb-8 border-b border-gray-200">
-              <div className="w-12 h-12 rounded-full bg-gray-100 flex items-center justify-center text-gray-600">
-                👤
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-gray-100 flex items-center justify-center">
+                {newsItem.authorImage ? (
+                  <img 
+                    src={newsItem.authorImage} 
+                    alt={newsItem.authorName}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <span className="text-gray-600">👤</span>
+                )}
               </div>
               <div>
                 <span className="text-xs text-gray-500 tracking-widest block font-medium">
                   By
                 </span>
                 <span className="text-sm font-bold text-gray-900 tracking-wide">
-                  Mustafa Hassan
+                  {newsItem.authorName || 'Anonymous'}
                 </span>
               </div>
             </div>
 
-            <div className="prose prose-lg max-w-none">
-              <p className="text-gray-700 leading-relaxed text-lg">
-                The winners were honored by His Excellency Omar Abdulrahman Al
-                Attiyah, the UAE Consul in Rabat, His Excellency Faisal Al
-                Rahmani, the Secretary-General of the UAE President's Cup Series
-                Committee for Purebred Arabian Horses, and Omar Al Saqley, the
-                General Manager of the Royal Company for the Encouragement of
-                Horse-Racing.
-              </p>
+            {/* Dynamic Content */}
+            <div 
+              className="prose prose-lg max-w-none"
+              dangerouslySetInnerHTML={{ __html: newsItem.content || '' }}
+            />
 
-              <p className="text-gray-700 leading-relaxed text-lg">
-                The distinguished winners were celebrated in a formal ceremony,
-                attended by His Excellency Omar Abdulrahman Al Attiyah, the UAE
-                Consul in Rabat, who represents the UAE's diplomatic interests
-                in Morocco. They were joined by His Excellency Faisal Al
-                Rahmani, the Secretary-General of the UAE President's Cup Series
-                Committee for Purebred Arabian Horses, an organization dedicated
-                to promoting and preserving the heritage of Arabian horse
-                racing, which is deeply embedded in the culture of the Gulf
-                region.
-              </p>
-            </div>
-          </div>
-
-          {/* Image Gallery Row */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="rounded-[30px] overflow-hidden shadow-lg aspect-video">
-              <img
-                src={NewsDetail2}
-                alt="Race highlight"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="rounded-[30px] overflow-hidden shadow-lg aspect-video">
-              <img
-                src={NewsDetail3}
-                alt="Winners portrait"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Secondary Content */}
-          <div className="prose prose-lg max-w-none space-y-8">
-            <p className="text-gray-700 leading-relaxed text-lg">
-              The Morocco stage of the 2024 UAE President Cup Series witnessed a
-              field of elite Arabian horses from across North Africa and the
-              Gulf region. The race, held under perfect weather conditions with
-              temperatures hovering around 22°C, saw BURAAK break steadily from
-              gate four and settle into a comfortable rhythm in the early
-              stages.
-            </p>
-
-            <p className="text-gray-700 leading-relaxed text-lg">
-              NOA GRAD, last year's champion and trained by Jean-François
-              Bernard and piloted by Jean Bernard Eyquem, gave chase throughout
-              but could never quite close the gap, finishing a respectable
-              second and conceding MAD 150,000.
-            </p>
-
-            {/* Blockquote */}
-            <div className="border-l-4 border-[#161687] pl-8 py-6 my-12 bg-gray-50 rounded-r-lg">
-              <p className="text-xl md:text-2xl text-gray-800 leading-relaxed mb-4 font-medium italic">
-                "BURAAK demonstrated exceptional stamina and speed today. This
-                victory is a testament to the quality of Arabian breeding in
-                Morocco and the dedication of our training programs."
-              </p>
-              <cite className="text-sm font-bold text-gray-600 tracking-widest not-italic">
-                — Mohamed Bessouit, Trainer
-              </cite>
-            </div>
-
-            {/* Featured Image */}
-            <div className="rounded-[30px] overflow-hidden shadow-xl my-12 relative">
-              <img
-                src={NewsDetail4}
-                alt="Main Race Image"
-                className="w-full h-auto aspect-video object-cover"
-              />
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-6">
-                <p className="text-white/80 text-xs tracking-widest text-center">
-                  BURAAK crosses the finish line ahead of the competition at
-                  Anfa Racecourse - Casablanca
-                </p>
+            {/* Associated Events */}
+            {newsItem.events && newsItem.events.length > 0 && (
+              <div className="mt-12 p-6 bg-gray-50 rounded-lg">
+                <h3 className="text-lg font-bold text-gray-900 mb-4">Related Events</h3>
+                <div className="space-y-3">
+                  {newsItem.events.map((event) => (
+                    <div key={event._id} className="flex items-center gap-3">
+                      <div className="w-2 h-2 bg-blue-600 rounded-full"></div>
+                      <div>
+                        <span className="font-medium text-gray-900">{event.name}</span>
+                        {event.distance && (
+                          <span className="text-sm text-gray-600 ml-2">({event.distance}m)</span>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            </div>
-
-            <p className="text-gray-700 leading-relaxed text-lg">
-              The trophy presentation ceremony was attended by His Excellency
-              Omar Abdulrahman Al Attiyah, UAE Consul in Rabat, who
-              congratulated the winning connections and praised the continued
-              growth of Arabian horse racing in Morocco.
-            </p>
+            )}
           </div>
         </div>
       </div>
