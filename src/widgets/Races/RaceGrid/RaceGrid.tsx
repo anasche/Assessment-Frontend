@@ -27,7 +27,7 @@ const RaceGrid: React.FC = () => {
   const transformedRaces = eventsResponse?.data?.data?.map(event => ({
     title: event.name,
     date: formatEventDate(event.localStartTime),
-    country: event.country?.name || 'Unknown',
+    country: event.country?.name,
     daysRemaining: getDaysRemaining(event.localStartTime),
     slug: event._id // Use event ID as slug for navigation
   })) || [];
