@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
+import { env } from '@/config/env';
 
-const BASE_URL = 'https://horse.mvp-apps.ae';
+const BASE_URL = env.API_BASE_URL;
 
 // TypeScript interfaces for API responses
 export interface NewsItem {

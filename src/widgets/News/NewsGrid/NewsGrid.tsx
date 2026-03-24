@@ -2,6 +2,7 @@ import NewsCard from '@/components/NewsCard';
 import NewsCardSkeleton from '@/components/NewsCardSkeleton';
 import { useNews } from '@/hooks/useApi';
 import { formatDate } from '@/utils/dateHelpers';
+import { createExcerpt } from '@/utils/textHelpers';
 
 interface NewsItem {
   _id: string;
@@ -29,13 +30,6 @@ const NewsGrid: React.FC = () => {
       return 'Event News';
     }
     return 'Arabian Horse News';
-  };
-
-  // Helper function to create excerpt from content
-  const createExcerpt = (content: string, maxLength = 150) => {
-    const textContent = content.replace(/<[^>]*>/g, '');
-    if (textContent.length <= maxLength) return textContent;
-    return textContent.substring(0, maxLength) + '...';
   };
 
   return (
