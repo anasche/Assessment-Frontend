@@ -1,6 +1,7 @@
 import React from "react";
 import { NewsItem } from "@/hooks/useApi";
 import { formatDate } from "@/utils/dateHelpers";
+import "./NewsContent.css";
 
 interface NewsDetailContentProps {
   newsItem: NewsItem;
@@ -52,7 +53,7 @@ const NewsDetailContent: React.FC<NewsDetailContentProps> = ({ newsItem }) => {
 
             {/* Dynamic Content */}
             <div 
-              className="prose prose-lg max-w-none"
+              className="news-content prose prose-lg max-w-none"
               dangerouslySetInnerHTML={{ __html: newsItem.content || '' }}
             />
 

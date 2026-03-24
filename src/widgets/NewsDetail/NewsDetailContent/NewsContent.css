@@ -1,0 +1,41 @@
+/* News Content Styling */
+.news-content h2.minimal__editor__content__heading {
+  @apply text-2xl md:text-3xl font-bold text-gray-900 mb-6 mt-8 font-syne;
+}
+
+.news-content h6.minimal__editor__content__heading {
+  @apply text-lg font-semibold text-gray-800 mb-4 mt-6 font-syne;
+}
+
+.news-content p {
+  @apply text-gray-700 leading-relaxed mb-4 text-base;
+}
+
+.news-content img.minimal__editor__content__image {
+  @apply w-full max-w-2xl mx-auto rounded-lg shadow-md my-8 block;
+}
+
+.news-content em {
+  @apply italic text-gray-600;
+}
+
+.news-content strong {
+  @apply font-semibold text-gray-900;
+}
+
+/* Additional styling for better content presentation */
+.news-content blockquote {
+  @apply border-l-4 border-blue-600 pl-6 my-6 italic text-gray-700;
+}
+
+.news-content ul, .news-content ol {
+  @apply my-4 pl-6;
+}
+
+.news-content li {
+  @apply mb-2 text-gray-700;
+}
+
+.news-content a {
+  @apply text-blue-600 hover:text-blue-800 underline;
+}
