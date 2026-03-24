@@ -2,45 +2,16 @@ import React from 'react';
 import { Clock, Globe } from 'lucide-react';
 import { JockeyIcon, TrainerIcon, OwnerIcon } from '@/components/icons/PersonnelIcons';
 import Winners1 from "@/assets/images/winners/winners.png";
+import { splitTitle } from '@/utils/textHelpers';
+import { formatDistance, getRaceDuration } from '@/utils/raceHelpers';
+import type { EventItem } from '@/hooks/useApi';
 
 interface WinnerCardProps {
-  winner: {
-    horse: string;
-    owner: string;
-    trainer: string;
-    jockey: string;
-    rank?: number;
-    time?: string;
-    distance?: string;
-    title?: string;
-  };
+  event: EventItem;
 }
 
-const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
-  // Function to split title into two lines intelligently
-  const splitTitle = (title?: string) => {
-    const defaultTitle = "Moroccan leg of the UAEPresidentCup Series";
-    const fullTitle = title || defaultTitle;
-    
-    // For the default title, use the specific split
-    if (fullTitle === defaultTitle) {
-      return {
-        line1: "Moroccan leg of the",
-        line2: "UAEPresidentCup Series"
-      };
-    }
-    
-    // For other titles, split at roughly the middle
-    const words = fullTitle.split(' ');
-    const midPoint = Math.ceil(words.length / 2);
-    
-    return {
-      line1: words.slice(0, midPoint).join(' '),
-      line2: words.slice(midPoint).join(' ')
-    };
-  };
-
-  const titleLines = splitTitle(winner.title);
+const WinnerCard: React.FC<WinnerCardProps> = ({ event }) => {
+  const titleLines = splitTitle(event.name);
 
   return (
     <div className="bg-[#141473] rounded-[15px] sm:rounded-[20px] md:rounded-[25px] lg:rounded-[30px] p-4 sm:p-5 md:p-6 text-white shadow-xl relative overflow-hidden flex flex-col">
@@ -52,12 +23,16 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
       <div className="flex items-center justify-center gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-3 sm:mb-4 md:mb-5 lg:mb-6">
         <div className="flex items-center gap-1.5 sm:gap-2 text-white/80">
           <Clock size={12} className="text-white/60 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
-          <span className="text-[9px] sm:text-[10px] md:text-xs font-medium">{winner.time || "02:21:43"}</span>
+          <span className="text-[9px] sm:text-[10px] md:text-xs font-medium">
+            {getRaceDuration(event.localStartTime, event.localEndTime)}
+          </span>
         </div>
-        <div className="flex items-center gap-1.5 sm:gap-2 text-white/80">
-          <Globe size={12} className="text-white/60 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
-          <span className="text-[9px] sm:text-[10px] md:text-xs font-medium">{winner.distance || "2,000 Km"}</span>
-        </div>
+        {event.distance && (
+          <div className="flex items-center gap-1.5 sm:gap-2 text-white/80">
+            <Globe size={12} className="text-white/60 sm:w-3.5 sm:h-3.5 md:w-4 md:h-4" />
+            <span className="text-[9px] sm:text-[10px] md:text-xs font-medium">{formatDistance(event.distance)}</span>
+          </div>
+        )}
       </div>
 
       <div className="flex-1 flex flex-col justify-end mt-2 sm:mt-3 md:mt-4">
@@ -73,7 +48,9 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[8px] sm:text-[9px] text-white/40 font-medium">Jockey</span>
-                <span className="text-xs sm:text-sm font-bold leading-tight capitalize truncate sm:whitespace-normal">{winner.jockey.split(' ')[0].toLowerCase()}</span>
+                <span className="text-xs sm:text-sm font-bold leading-tight capitalize truncate sm:whitespace-normal">
+                  {event.winner?.jockey?.name ? event.winner.jockey.name.toLowerCase() : 'N/A'}
+                </span>
               </div>
             </div>
 
@@ -83,7 +60,9 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[8px] sm:text-[9px] text-white/40 font-medium">Trainer</span>
-                <span className="text-xs sm:text-sm font-bold leading-tight capitalize truncate sm:whitespace-normal">{winner.trainer.split(' ')[0].toLowerCase()}</span>
+                <span className="text-xs sm:text-sm font-bold leading-tight capitalize truncate sm:whitespace-normal">
+                  {event.winner?.trainer?.name ? event.winner.trainer.name.toLowerCase() : 'N/A'}
+                </span>
               </div>
             </div>
 
@@ -93,7 +72,9 @@ const WinnerCard: React.FC<WinnerCardProps> = ({ winner }) => {
               </div>
               <div className="flex flex-col min-w-0">
                 <span className="text-[8px] sm:text-[9px] text-white/40 font-medium">Owner</span>
-                <span className="text-xs sm:text-sm font-bold leading-tight capitalize truncate sm:whitespace-normal">{winner.owner.split(' ')[0].toLowerCase()}</span>
+                <span className="text-xs sm:text-sm font-bold leading-tight capitalize truncate sm:whitespace-normal">
+                  {event.winner?.owner?.name ? event.winner.owner.name.toLowerCase() : 'N/A'}
+                </span>
               </div>
             </div>
           </div>

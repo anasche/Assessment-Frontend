@@ -3,99 +3,38 @@ import { Calendar, ChevronDown } from "lucide-react";
 import FeaturedEvent from "@/assets/images/event-calendar/event-calendar.png";
 import Title from "@/components/Title";
 import EventCard from "@/components/EventCard";
+import EventCardSkeleton from "@/components/EventCardSkeleton";
 import NoEvents from "./NoEvents";
 import Slider from "@/components/Slider";
+import { useEventsCalendar } from "@/hooks/useApi";
+import { getDaysRemaining, formatEventDate, getMonthNumber } from "@/utils/raceHelpers";
 
 const EventsCalendar: React.FC = () => {
-  const [selectedYear, setSelectedYear] = useState(2025);
-  const [selectedMonth, setSelectedMonth] = useState("April");
+  const [selectedYear, setSelectedYear] = useState(2026);
+  const [selectedMonth, setSelectedMonth] = useState("March");
   const [isYearDropdownOpen, setIsYearDropdownOpen] = useState(false);
   const [isMonthDropdownOpen, setIsMonthDropdownOpen] = useState(false);
 
   const yearRef = useRef<HTMLDivElement>(null);
   const monthRef = useRef<HTMLDivElement>(null);
 
-  const years = [2024, 2025];
-  const months = ["January", "February", "March", "April", "May", "June"];
+  const years = [2024, 2025, 2026];
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  const events = [
-    {
-      title: "Moroccan leg of the UAE President Cup Series",
-      date: "30 apr, 2025",
-      location: "Casalanca, Morocco",
-      country: "Morocco 🇲🇦",
-      year: 2025,
-      month: "April",
-      daysRemaining: 7,
-    },
-    {
-      title: "Saudi Arabian leg of the President Cup",
-      date: "25 apr, 2025",
-      location: "Riyadh, KSA",
-      country: "KSA 🇸🇦",
-      year: 2025,
-      month: "April",
-      daysRemaining: 2,
-    },
-    {
-      title: "Oman International Derby",
-      date: "20 apr, 2025",
-      location: "Muscat, Oman",
-      country: "Oman 🇴🇲",
-      year: 2025,
-      month: "April",
-      daysRemaining: 0,
-    },
-    {
-      title: "Qatar Gold Cup",
-      date: "12 apr, 2025",
-      location: "Doha, Qatar",
-      country: "Qatar 🇶🇦",
-      year: 2025,
-      month: "April",
-      daysRemaining: 0,
-    },
-    {
-      title: "French leg of the UAE President Cup Series",
-      date: "15 may, 2025",
-      location: "Paris, France",
-      country: "France 🇫🇷",
-      year: 2025,
-      month: "May",
-      daysRemaining: 22,
-    },
-    {
-      title: "UAE National Day Cup",
-      date: "03 jun, 2025",
-      location: "Abu Dhabi, UAE",
-      country: "UAE 🇦🇪",
-      year: 2025,
-      month: "June",
-      daysRemaining: 40,
-    },
-    {
-      title: "Italian Invitational",
-      date: "20 jan, 2024",
-      location: "Rome, Italy",
-      country: "Italy 🇮🇹",
-      year: 2024,
-      month: "January",
-      daysRemaining: 0,
-    },
-    {
-      title: "UK Championship",
-      date: "10 mar, 2024",
-      location: "London, UK",
-      country: "UK 🇬🇧",
-      year: 2024,
-      month: "March",
-      daysRemaining: 0,
-    },
-  ];
+  // Get month number for API call
+  const monthNumber = getMonthNumber(selectedMonth);
+  
+  // Fetch events from API
+  const { data: eventsResponse, isLoading, error, isError } = useEventsCalendar(monthNumber, selectedYear);
 
-  const filteredEvents = events.filter(
-    (event) => event.year === selectedYear && event.month === selectedMonth
-  );
+  // Transform API data to match EventCard props
+  const transformedEvents = eventsResponse?.data?.data?.map(event => ({
+    title: event.name,
+    date: formatEventDate(event.localStartTime),
+    country: event.country?.name || 'Unknown',
+    daysRemaining: getDaysRemaining(event.localStartTime),
+    slug: event._id // Use event ID as slug for potential navigation
+  })) || [];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -219,33 +158,77 @@ const EventsCalendar: React.FC = () => {
               </div>
             </div>
             {/* Navigation Buttons Area - Fixed height to avoid jump */}
-            <Slider
-              key={`${selectedYear}-${selectedMonth}-${filteredEvents.length === 0}`}
-              prevElClass="events-prev"
-              nextElClass="events-next"
-              variant="dark"
-              navigationContainerClass={`mb-3 md:mb-6 ${filteredEvents.length > 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-              navButtonClass="!h-8 !w-8 md:!h-9 md:!w-9 !px-0"
-              spaceBetween={12}
-              centeredSlides={filteredEvents.length === 0}
-              allowTouchMove={filteredEvents.length > 1}
-              breakpoints={{
-                320: { slidesPerView: 1, spaceBetween: 12 },
-                480: { slidesPerView: 1, spaceBetween: 16 },
-                640: { slidesPerView: 1.5, spaceBetween: 16 },
-                768: { slidesPerView: 1.5, spaceBetween: 20 },
-                1024: { slidesPerView: 2.5, spaceBetween: 16 },
-                1280: { slidesPerView: 3, spaceBetween: 16 },
-              }}
-            >
-              {filteredEvents.length > 0 ? (
-                filteredEvents.map((event, idx) => (
-                  <EventCard key={idx} {...event} />
-                ))
-              ) : (
-                <NoEvents />
-              )}
-            </Slider>
+            {isLoading ? (
+              <div className="h-[280px] md:h-[300px] flex flex-col">
+                {/* Navigation placeholder to maintain spacing */}
+                <div className="mb-3 md:mb-6 h-8 md:h-9 opacity-0"></div>
+                {/* Skeleton content */}
+                <div className="flex-1">
+                  <Slider
+                    prevElClass="events-prev"
+                    nextElClass="events-next"
+                    variant="dark"
+                    navigationContainerClass="mb-3 md:mb-6 opacity-0 pointer-events-none"
+                    navButtonClass="!h-8 !w-8 md:!h-9 md:!w-9 !px-0"
+                    spaceBetween={12}
+                    centeredSlides={false}
+                    allowTouchMove={false}
+                    breakpoints={{
+                      320: { slidesPerView: 1, spaceBetween: 12 },
+                      480: { slidesPerView: 1, spaceBetween: 16 },
+                      640: { slidesPerView: 1.5, spaceBetween: 16 },
+                      768: { slidesPerView: 1.5, spaceBetween: 20 },
+                      1024: { slidesPerView: 2.5, spaceBetween: 16 },
+                      1280: { slidesPerView: 3, spaceBetween: 16 },
+                    }}
+                  >
+                    {Array.from({ length: 3 }).map((_, idx) => (
+                      <EventCardSkeleton key={idx} />
+                    ))}
+                  </Slider>
+                </div>
+              </div>
+            ) : isError ? (
+              <div className="h-[280px] md:h-[300px] flex flex-col">
+                {/* Navigation placeholder to maintain spacing */}
+                <div className="mb-3 md:mb-6 h-8 md:h-9 opacity-0"></div>
+                {/* Error content */}
+                <div className="flex-1 flex justify-center items-center">
+                  <div className="text-center text-red-600">
+                    <p>Failed to load events</p>
+                    <p className="text-sm mt-1">{error?.message}</p>
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Slider
+                key={`${selectedYear}-${selectedMonth}-${transformedEvents.length === 0}`}
+                prevElClass="events-prev"
+                nextElClass="events-next"
+                variant="dark"
+                navigationContainerClass={`mb-3 md:mb-6 ${transformedEvents.length > 3 ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                navButtonClass="!h-8 !w-8 md:!h-9 md:!w-9 !px-0"
+                spaceBetween={12}
+                centeredSlides={transformedEvents.length === 0}
+                allowTouchMove={transformedEvents.length > 1}
+                breakpoints={{
+                  320: { slidesPerView: 1, spaceBetween: 12 },
+                  480: { slidesPerView: 1, spaceBetween: 16 },
+                  640: { slidesPerView: 1.5, spaceBetween: 16 },
+                  768: { slidesPerView: 1.5, spaceBetween: 20 },
+                  1024: { slidesPerView: 2.5, spaceBetween: 16 },
+                  1280: { slidesPerView: 3, spaceBetween: 16 },
+                }}
+              >
+                {transformedEvents.length > 0 ? (
+                  transformedEvents.map((event, idx) => (
+                    <EventCard key={event.slug || idx} {...event} />
+                  ))
+                ) : (
+                  <NoEvents />
+                )}
+              </Slider>
+            )}
           </div>
         </div>
       </div>

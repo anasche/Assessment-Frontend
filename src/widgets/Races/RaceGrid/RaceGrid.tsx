@@ -1,124 +1,36 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Calendar, ChevronDown } from 'lucide-react';
 import EventCard from '@/components/EventCard';
+import EventCardSkeleton from '@/components/EventCardSkeleton';
+import { useUpcomingEvents } from '@/hooks/useApi';
+import { getDaysRemaining, formatEventDate, getMonthNumber } from '@/utils/raceHelpers';
 
 const RaceGrid: React.FC = () => {
-  const [selectedYear, setSelectedYear] = useState(2025);
-  const [selectedMonth, setSelectedMonth] = useState("April");
+  const [selectedYear, setSelectedYear] = useState(2026);
+  const [selectedMonth, setSelectedMonth] = useState("May");
   const [isYearDropdownOpen, setIsYearDropdownOpen] = useState(false);
   const [isMonthDropdownOpen, setIsMonthDropdownOpen] = useState(false);
 
   const yearRef = useRef<HTMLDivElement>(null);
   const monthRef = useRef<HTMLDivElement>(null);
 
-  const years = [2024, 2025];
-  const months = ["January", "February", "March", "April", "May", "June"];
+  const years = [2024, 2025, 2026];
+  const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-  const races = [
-    {
-      id: 1,
-      title: "Moroccan leg of the UAE President Cup Series",
-      country: "Morocco 🇲🇦",
-      date: "30 apr, 2025",
-      location: "Casablanca, Morocco",
-      year: 2025,
-      month: "April",
-      daysRemaining: 7,
-      slug: "moroccan-leg"
-    },
-    {
-      id: 2,
-      title: "Saudi Arabian leg of the President Cup",
-      country: "KSA 🇸🇦",
-      date: "25 apr, 2025",
-      location: "Riyadh, KSA",
-      year: 2025,
-      month: "April",
-      daysRemaining: 2,
-      slug: "saudi-leg"
-    },
-    {
-      id: 3,
-      title: "Oman International Derby",
-      country: "Oman 🇴🇲",
-      date: "20 apr, 2025",
-      location: "Muscat, Oman",
-      year: 2025,
-      month: "April",
-      daysRemaining: 0,
-      slug: "oman-derby"
-    },
-    {
-      id: 4,
-      title: "Qatar Gold Cup",
-      country: "Qatar 🇶🇦",
-      date: "12 apr, 2025",
-      location: "Doha, Qatar",
-      year: 2025,
-      month: "April",
-      daysRemaining: 0,
-      slug: "qatar-cup"
-    },
-    {
-      id: 5,
-      title: "French leg of the UAE President Cup Series",
-      country: "France 🇫🇷",
-      date: "15 may, 2025",
-      location: "Paris, France",
-      year: 2025,
-      month: "May",
-      daysRemaining: 22,
-      slug: "french-leg"
-    },
-    {
-      id: 6,
-      title: "UAE National Day Cup",
-      country: "UAE 🇦🇪",
-      date: "03 jun, 2025",
-      location: "Abu Dhabi, UAE",
-      year: 2025,
-      month: "June",
-      daysRemaining: 40,
-      slug: "uae-cup"
-    },
-    {
-      id: 7,
-      title: "Italian Invitational",
-      country: "Italy 🇮🇹",
-      date: "20 jan, 2024",
-      location: "Rome, Italy",
-      year: 2024,
-      month: "January",
-      daysRemaining: 0,
-      slug: "italian-invitational"
-    },
-    {
-      id: 8,
-      title: "UK Championship",
-      country: "UK 🇬🇧",
-      date: "10 mar, 2024",
-      location: "London, UK",
-      year: 2024,
-      month: "March",
-      daysRemaining: 0,
-      slug: "uk-championship"
-    },
-    {
-      id: 9,
-      title: "German Grand Prix",
-      country: "Germany 🇩🇪",
-      date: "28 feb, 2024",
-      location: "Berlin, Germany",
-      year: 2024,
-      month: "February",
-      daysRemaining: 0,
-      slug: "german-gp"
-    }
-  ];
+  // Get month number for API call
+  const monthNumber = getMonthNumber(selectedMonth);
+  
+  // Fetch upcoming events from API
+  const { data: eventsResponse, isLoading, error, isError } = useUpcomingEvents(monthNumber, selectedYear);
 
-  const filteredRaces = races.filter(
-    (race) => race.year === selectedYear && race.month === selectedMonth
-  );
+  // Transform API data to match EventCard props
+  const transformedRaces = eventsResponse?.data?.data?.map(event => ({
+    title: event.name,
+    date: formatEventDate(event.localStartTime),
+    country: event.country?.name || 'Unknown',
+    daysRemaining: getDaysRemaining(event.localStartTime),
+    slug: event._id // Use event ID as slug for navigation
+  })) || [];
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -221,11 +133,28 @@ const RaceGrid: React.FC = () => {
         </div>
 
         {/* Grid */}
-        {filteredRaces.length > 0 ? (
+        {isLoading ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
-            {filteredRaces.map((race, idx) => (
+            {Array.from({ length: 6 }).map((_, idx) => (
+              <EventCardSkeleton key={idx} />
+            ))}
+          </div>
+        ) : isError ? (
+          <div className="flex items-center justify-center py-16 md:py-20 lg:py-24">
+            <div className="text-center">
+              <p className="text-red-600 text-lg md:text-xl font-medium">
+                Failed to load races
+              </p>
+              <p className="text-red-400 text-sm md:text-base mt-2">
+                {error?.message}
+              </p>
+            </div>
+          </div>
+        ) : transformedRaces.length > 0 ? (
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 lg:gap-8">
+            {transformedRaces.map((race, idx) => (
               <EventCard 
-                key={race.id}
+                key={race.slug || idx}
                 {...race}
               />
             ))}

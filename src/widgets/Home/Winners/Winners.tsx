@@ -1,17 +1,14 @@
 import React from 'react';
 import Title from '@/components/Title';
 import WinnerCard from './WinnerCard';
-
+import WinnerCardSkeleton from '@/components/WinnerCardSkeleton';
+import { usePastEventsWithWinners } from '@/hooks/useApi';
 
 const Winners: React.FC = () => {
-  const winners = [
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
-    { horse: 'arrow eagle', owner: 'Alii', trainer: 'Kayle', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
-    { horse: 'arrow eagle', owner: 'DAISSAOUI MOHAMED', trainer: 'DAISSAOUI MOHAMED', jockey: 'Talat', rank: 4, time: "02:21:43", distance: "2,000 Km", title: "UAEPresidentCup Series" },
-  ];
+  const { data: eventsResponse, isLoading, error, isError } = usePastEventsWithWinners();
+
+  // Extract events data and limit to 6 for display
+  const events = eventsResponse?.data?.data?.slice(0, 6) || [];
 
   return (
     <section className="py-12 md:py-20 bg-white relative">
@@ -23,9 +20,24 @@ const Winners: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-          {winners.map((winner, index) => (
-            <WinnerCard key={index} winner={winner} />
-          ))}
+          {isLoading ? (
+            // Show skeleton cards while loading
+            Array.from({ length: 6 }).map((_, index) => (
+              <WinnerCardSkeleton key={index} />
+            ))
+          ) : isError ? (
+            <div className="col-span-full text-center">
+              <p className="text-red-600">Failed to load winners: {error?.message}</p>
+            </div>
+          ) : events.length === 0 ? (
+            <div className="col-span-full text-center">
+              <p className="text-gray-600">No winners data available</p>
+            </div>
+          ) : (
+            events.map((event, index) => (
+              <WinnerCard key={event._id || index} event={event} />
+            ))
+          )}
         </div>
       </div>
     </section>
