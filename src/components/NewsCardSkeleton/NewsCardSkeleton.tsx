@@ -2,7 +2,7 @@ import React from 'react';
 
 const NewsCardSkeleton: React.FC = () => {
   return (
-    <div className="bg-white rounded-[40px] overflow-hidden shadow-sm border border-gray-100 flex flex-col h-full animate-pulse">
+    <div className="bg-white rounded-[40px] overflow-hidden shadow-sm border border-gray-100 flex flex-col h-[500px] md:h-[650px] animate-pulse">
       {/* Image Skeleton */}
       <div className="relative aspect-[16/11] overflow-hidden">
         <div className="w-full h-full bg-gray-200"></div>
@@ -17,10 +17,15 @@ const NewsCardSkeleton: React.FC = () => {
         </div>
         
         {/* Description Skeleton */}
-        <div className="mb-8 space-y-2">
+        <div className="mb-4 space-y-2 flex-grow">
           <div className="bg-gray-100 h-4 rounded"></div>
           <div className="bg-gray-100 h-4 rounded"></div>
           <div className="bg-gray-100 h-4 rounded w-2/3"></div>
+        </div>
+
+        {/* Date Skeleton */}
+        <div className="mb-6">
+          <div className="bg-gray-100 h-3 w-24 rounded"></div>
         </div>
 
         {/* Button Skeleton */}

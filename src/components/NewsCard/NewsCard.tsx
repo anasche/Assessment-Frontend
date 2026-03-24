@@ -20,7 +20,7 @@ const NewsCard: React.FC<NewsCardProps> = ({
   description,
 }) => {
   return (
-    <div className="group bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-full">
+    <div className="group bg-white rounded-[40px] overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-gray-100 flex flex-col h-[500px] md:h-[650px]">
       <div className="relative aspect-[16/11] overflow-hidden">
         <img
           src={image}
@@ -29,13 +29,17 @@ const NewsCard: React.FC<NewsCardProps> = ({
         />
       </div>
       <div className="p-10 flex flex-col flex-grow">
-        <h3 className="text-xl font-black text-[#0A0B14] mb-4 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
+        <h3 className="text-xl font-black text-[#0A0B14] mb-4 group-hover:text-blue-600 transition-colors leading-tight tracking-tight line-clamp-3">
           {title}
         </h3>
-        <p className="text-gray-400 text-xs leading-relaxed mb-8 line-clamp-3">
+        <p className="text-gray-400 text-xs leading-relaxed mb-4 line-clamp-4 flex-grow">
           {description ||
             "The Moroccan leg of the UAE President Cup for Purebred Arabian Horses promises to be an extraordinary event, showcasing the best of Arabian horse heritage..."}
         </p>
+        
+        <div className="text-xs text-gray-500 mb-6">
+          {date}
+        </div>
 
         <div className="mt-auto flex justify-end">
           <Link
