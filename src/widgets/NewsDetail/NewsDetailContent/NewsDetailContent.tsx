@@ -7,7 +7,17 @@ interface NewsDetailContentProps {
   newsItem: NewsItem;
 }
 
+// Function to decode HTML entities
+const decodeHtmlEntities = (text: string): string => {
+  const textarea = document.createElement('textarea');
+  textarea.innerHTML = text;
+  return textarea.value;
+};
+
 const NewsDetailContent: React.FC<NewsDetailContentProps> = ({ newsItem }) => {
+  // Decode HTML entities in the content
+  const decodedContent = newsItem.content ? decodeHtmlEntities(newsItem.content) : '';
+
   return (
     <section className="bg-white py-16 md:py-24 px-4">
       <div className="container mx-auto max-w-[1200px]">
@@ -54,7 +64,7 @@ const NewsDetailContent: React.FC<NewsDetailContentProps> = ({ newsItem }) => {
             {/* Dynamic Content */}
             <div 
               className="news-content prose prose-lg max-w-none"
-              dangerouslySetInnerHTML={{ __html: newsItem.content || '' }}
+              dangerouslySetInnerHTML={{ __html: decodedContent }}
             />
 
             {/* Associated Events */}

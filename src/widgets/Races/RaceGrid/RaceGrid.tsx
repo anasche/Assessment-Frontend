@@ -7,7 +7,7 @@ import { getDaysRemaining, formatEventDate, getMonthNumber } from '@/utils/raceH
 
 const RaceGrid: React.FC = () => {
   const [selectedYear, setSelectedYear] = useState(2026);
-  const [selectedMonth, setSelectedMonth] = useState("May");
+  const [selectedMonth, setSelectedMonth] = useState("March");
   const [isYearDropdownOpen, setIsYearDropdownOpen] = useState(false);
   const [isMonthDropdownOpen, setIsMonthDropdownOpen] = useState(false);
 

@@ -1,9 +1,15 @@
 /* News Content Styling */
-.news-content h2.minimal__editor__content__heading {
+.news-content h1 {
+  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-8 mt-10 font-syne;
+}
+
+.news-content h2.minimal__editor__content__heading,
+.news-content h2 {
   @apply text-2xl md:text-3xl font-bold text-gray-900 mb-6 mt-8 font-syne;
 }
 
-.news-content h6.minimal__editor__content__heading {
+.news-content h6.minimal__editor__content__heading,
+.news-content h6 {
   @apply text-lg font-semibold text-gray-800 mb-4 mt-6 font-syne;
 }
 
@@ -11,7 +17,8 @@
   @apply text-gray-700 leading-relaxed mb-4 text-base;
 }
 
-.news-content img.minimal__editor__content__image {
+.news-content img.minimal__editor__content__image,
+.news-content img {
   @apply w-full max-w-2xl mx-auto rounded-lg shadow-md my-8 block;
 }
 
@@ -25,17 +32,45 @@
 
 /* Additional styling for better content presentation */
 .news-content blockquote {
-  @apply border-l-4 border-blue-600 pl-6 my-6 italic text-gray-700;
+  @apply border-l-4 border-blue-600 pl-6 my-6 italic text-gray-700 bg-gray-50 py-4 rounded-r-lg;
 }
 
 .news-content ul, .news-content ol {
-  @apply my-4 pl-6;
+  @apply my-4 pl-6 space-y-2;
 }
 
-.news-content li {
-  @apply mb-2 text-gray-700;
+.news-content ul li {
+  @apply mb-2 text-gray-700 list-disc;
+}
+
+.news-content ol li {
+  @apply mb-2 text-gray-700 list-decimal;
 }
 
 .news-content a {
-  @apply text-blue-600 hover:text-blue-800 underline;
+  @apply text-blue-600 hover:text-blue-800 underline transition-colors;
+}
+
+/* Handle nested paragraphs and lists */
+.news-content li p {
+  @apply mb-2;
+}
+
+/* Style for inline code if present */
+.news-content code {
+  @apply bg-gray-100 px-2 py-1 rounded text-sm font-mono;
+}
+
+/* Style for tables if present */
+.news-content table {
+  @apply w-full border-collapse border border-gray-300 my-6;
+}
+
+.news-content th,
+.news-content td {
+  @apply border border-gray-300 px-4 py-2 text-left;
+}
+
+.news-content th {
+  @apply bg-gray-100 font-semibold;
 }
