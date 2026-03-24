@@ -1,25 +1,10 @@
 import NewsCard from '@/components/NewsCard';
 import NewsCardSkeleton from '@/components/NewsCardSkeleton';
-import { useNews } from '@/hooks/useApi';
+import { useNews, type NewsItem } from '@/hooks/useApi';
 import { formatDate } from '@/utils/dateHelpers';
 import { createExcerpt } from '@/utils/textHelpers';
 
-interface NewsItem {
-  _id: string;
-  title: string;
-  titleAr: string;
-  content: string;
-  contentAr: string;
-  image: string;
-  authorName: string;
-  authorNameAr: string;
-  authorImage: string;
-  date: string;
-  events: any[];
-  isPublished: boolean;
-  createdAt: string;
-  updatedAt: string;
-}
+
 
 const NewsGrid: React.FC = () => {
   const { data: newsResponse, isLoading, error, isError } = useNews(1, 10);
@@ -31,7 +16,7 @@ const NewsGrid: React.FC = () => {
     }
     return 'Arabian Horse News';
   };
-
+console.log(newsResponse,"newsResponse")
   return (
     <section className="bg-white px-4">
       <div className="container mx-auto max-w-7xl">
@@ -47,8 +32,9 @@ const NewsGrid: React.FC = () => {
               <p className="text-red-600">Failed to load news: {error?.message}</p>
             </div>
           ) : (() => {
-            // Based on the API structure: newsResponse contains { currentPage, totalCount, totalPages, data: [...] }
-            const newsData = newsResponse?.data || [];
+            // The API returns NewsResponse with { currentPage, totalCount, totalPages, data: [...] }
+            // newsResponse is already the NewsResponse object, so we access .data directly
+            const newsData = newsResponse?.data?.data || [];
             
             // Ensure newsData is an array
             if (!Array.isArray(newsData)) {
