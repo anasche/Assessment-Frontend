@@ -74,7 +74,9 @@ const RaceResultsTable: React.FC<RaceResultsTableProps> = ({ eventItem }) => {
                 <div className="space-y-1">
                   <div className="text-sm">
                     <span className="text-gray-600">Owner : </span>
-                    <span className="text-gray-900 font-semibold">{member.horse?.owner?.name || 'N/A'}</span>
+                    <span className="text-gray-900 font-semibold">
+                      {member.horse?.owner?.name || member.owner?.name || 'N/A'}
+                    </span>
                   </div>
                   <div className="text-sm">
                     <span className="text-gray-600">Trainer : </span>

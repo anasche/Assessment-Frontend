@@ -35,7 +35,10 @@ interface Horse {
   _id: string;
   name: string;
   nameAr?: string;
-  owner: string;
+  owner: {
+    _id: string;
+    name: string;
+  };
   weight?: string;
   dob: string;
   parent?: string;
