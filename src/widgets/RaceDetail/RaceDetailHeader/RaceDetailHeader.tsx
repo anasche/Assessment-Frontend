@@ -25,7 +25,7 @@ const RaceDetailHeader: React.FC<RaceDetailHeaderProps> = ({ eventItem }) => {
                 {eventItem.country.name}
               </p>
             )}
-            {eventItem.description && (
+            {/* {eventItem.description && (
               <p className="text-gray-600 text-base max-w-2xl mx-auto">
                 {eventItem.description}
               </p>
@@ -36,7 +36,7 @@ const RaceDetailHeader: React.FC<RaceDetailHeaderProps> = ({ eventItem }) => {
                   <strong>Distance:</strong> {eventItem.distance}m
                 </span>
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

@@ -4,8 +4,8 @@ import { EventCountryIcon, EventDateIcon } from "@/components/icons/PersonnelIco
 
 interface EventCardProps {
   title: string;
-  date: string;
-  country: string;
+  date?: string;
+  country?: string;
   daysRemaining: number;
   slug?: string;
 }
