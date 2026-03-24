@@ -80,17 +80,21 @@ interface Country {
 }
 
 interface Member {
+  name?: string;
+  profilePicture?: string;
+  country?: string;
   draw: string;
+  weight?: number;
+  earning: number;
+  age?: number;
+  horseForm?: string;
+  rating?: number;
+  rank: number | null;
+  _id: string;
   horse?: Horse;
   jockey?: Jockey;
   trainer?: Trainer;
   owner?: Owner;
-  earning: number;
-  horseForm: string;
-  rating: number;
-  rank: number | null;
-  age?: number;
-  _id: string;
   horseObjectId?: string | null;
   trainerObjectId?: string | null;
   jockeyObjectId?: string | null;
@@ -161,6 +165,14 @@ const apiService = {
     return result.data || result;
   },
 
+  getEventById: async (id: string): Promise<EventItem> => {
+    const response = await fetch(`${BASE_URL}/events/${id}`);
+    if (!response.ok) throw new Error('Failed to fetch event');
+    const result = await response.json();
+    // Based on the API structure, it should return { message, data: EventItem }
+    return result.data || result;
+  },
+
   getPastEventsWithWinners: async (): Promise<PastEventsResponse> => {
     const response = await fetch(`${BASE_URL}/events/past-events-with-winners`);
     if (!response.ok) throw new Error('Failed to fetch past events');
@@ -210,6 +222,15 @@ export const useNewsById = (id: string) => {
   return useQuery({
     queryKey: ['news', id],
     queryFn: () => apiService.getNewsById(id),
+    staleTime: 10 * 60 * 1000, // 10 minutes
+    enabled: !!id, // Only run if id is provided
+  });
+};
+
+export const useEventById = (id: string) => {
+  return useQuery({
+    queryKey: ['event', id],
+    queryFn: () => apiService.getEventById(id),
     staleTime: 10 * 60 * 1000, // 10 minutes
     enabled: !!id, // Only run if id is provided
   });

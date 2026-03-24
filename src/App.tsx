@@ -32,7 +32,7 @@ function App() {
             <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/services" element={<Services />} />
             <Route path="/races" element={<Races />} />
-            <Route path="/races/:slug" element={<RaceDetail />} />
+            <Route path="/races/:id" element={<RaceDetail />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/ticket" element={<Ticket />} />
             <Route path="/personnel/owners" element={<Owners />} />
