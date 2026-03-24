@@ -22,10 +22,13 @@ export interface NewsItem {
 }
 
 export interface NewsResponse {
-  currentPage: number;
-  totalCount: number;
-  totalPages: number;
-  data: NewsItem[];
+  message: string;
+  data: {
+    currentPage: number;
+    totalCount: number;
+    totalPages: number;
+    data: NewsItem[];
+  };
 }
 
 interface Horse {
@@ -141,10 +144,13 @@ export interface FAQItem {
 
 // API service functions
 const apiService = {
-  getNews: async (page = 1, limit = 200): Promise<NewsResponse> => {
+  getNews: async (page = 1, limit = 200): Promise<NewsItem[]> => {
     const response = await fetch(`${BASE_URL}/news?page=${page}&limit=${limit}`);
     if (!response.ok) throw new Error('Failed to fetch news');
-    return response.json();
+    const result = await response.json();
+    // The API returns { message, data: { currentPage, totalCount, totalPages, data: [...] } }
+    // We extract the nested data array
+    return result.data?.data || [];
   },
 
   getPastEventsWithWinners: async (): Promise<PastEventsResponse> => {

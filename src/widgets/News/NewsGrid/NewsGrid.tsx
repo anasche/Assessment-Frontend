@@ -16,7 +16,6 @@ const NewsGrid: React.FC = () => {
     }
     return 'Arabian Horse News';
   };
-console.log(newsResponse,"newsResponse")
   return (
     <section className="bg-white px-4">
       <div className="container mx-auto max-w-7xl">
@@ -32,9 +31,8 @@ console.log(newsResponse,"newsResponse")
               <p className="text-red-600">Failed to load news: {error?.message}</p>
             </div>
           ) : (() => {
-            // The API returns NewsResponse with { currentPage, totalCount, totalPages, data: [...] }
-            // newsResponse is already the NewsResponse object, so we access .data directly
-            const newsData = newsResponse?.data?.data || [];
+            // newsResponse is now directly the array of NewsItem[]
+            const newsData = newsResponse || [];
             
             // Ensure newsData is an array
             if (!Array.isArray(newsData)) {
